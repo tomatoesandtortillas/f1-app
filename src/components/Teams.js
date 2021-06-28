@@ -2,19 +2,17 @@ import React from "react";
 import * as $ from "jquery";
 
 export default class Teams extends React.Component {
-
-
     constructor() {
         super();
         this.state = {
             teams: []
         };
-
-
     }
+
     componentDidMount() {
         this.getTeams();
     }
+
     getTeams() {
         var url = "http://ergast.com/api/f1/2013/constructorStandings.json";
         $.get(url, (data) => {
@@ -24,6 +22,7 @@ export default class Teams extends React.Component {
             console.log(this.state.teams);
         })
     }
+    
     render() {
         return (
             <div>

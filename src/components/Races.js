@@ -2,16 +2,17 @@ import React from "react";
 import * as $ from "jquery";
 
 export default class Races extends React.Component {
-
     constructor() {
         super();
         this.state = {
             races: []
         };
     }
+
     componentDidMount(){
         this.getRaces();
     };
+    
     getRaces() {
         var url = "http://ergast.com/api/f1/2013/results/1.json";
         $.get(url, (data) => {

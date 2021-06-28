@@ -2,7 +2,6 @@ import React from "react";
 import * as $ from "jquery";
 
 export default class Drivers extends React.Component {
-
     constructor() {
         super();
         this.state = {
@@ -10,9 +9,11 @@ export default class Drivers extends React.Component {
             season: ""
         };
     }
+
     componentDidMount() {
         this.getDrivers();
     }
+    
     getDrivers() {
         var url = "http://ergast.com/api/f1/2013/driverStandings.json";
         $.get(url, (data) => {
