@@ -2,6 +2,7 @@ import React from "react";
 import Drivers from "./components/Drivers";
 import Teams from "./components/Teams";
 import Races from "./components/Races";
+import Welcome from "./components/Welcome";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class App extends React.Component {
