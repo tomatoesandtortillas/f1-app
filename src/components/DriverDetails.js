@@ -9,17 +9,20 @@ export default class DriverDetails extends React.Component {
         };
     }
 
+    displayDriverDetails() {
+
+    };
+
     componentDidMount() {
         this.getDriverDetails();
     }
 
     getDriverDetails() {
-        var url = "http://ergast.com/api/f1/2013/drivers/0/driverStandings.json";
+        var url = "http://ergast.com/api/f1/2013/driverStandings.json";
         $.get(url, (data) => {
             this.setState({
                 drivers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
             });
-            console.log("drivers", this.state.drivers);
         })
 
     }
