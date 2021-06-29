@@ -17,7 +17,7 @@ export default class App extends React.Component {
                         </ul>
                     </nav>
 
-                    {/* <Route path="/" exact component={Welcome} /> */}
+                    <Route path="/" exact component={Welcome} />
                     <Route path="/drivers" component={Drivers} />
                     {/* <Route path="/drivers/driverDetails/:id" component={DriverDetails} /> */}
                     {/* <Route path="/teams/teamsDetails/:id" component={teamURL} /> */}
