@@ -22,7 +22,7 @@ export default class Teams extends React.Component {
             console.log(this.state.teams);
         })
     }
-    
+
     render() {
         return (
             <div>
