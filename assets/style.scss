@@ -1,4 +1,12 @@
+@import "variables";
+
 h1 {
-    color: teal;
-    text-decoration: underline;
+    color: $font-color;
+    background-color: $base-color;
+}
+.side-bar{
+    float: left;
+    width: 150px;
+    height: 100%;
+    
 }

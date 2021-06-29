@@ -11,8 +11,11 @@ export default class App extends React.Component {
     render() {
         return (
             <Router>
-                <div>
-                    <nav>
+                <div className="side-bar">
+                    <div>
+                        <img src=""></img>
+                    </div>
+                    <nav className="nav">
                         <ul>
                             <li><Link to="/drivers">Drivers</Link></li>
                             <li><Link to="/teams">Teams</Link></li>
