@@ -1,27 +1,40 @@
 import React from "react";
 import * as $ from "jquery";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 
 export default class Races extends React.Component {
     constructor() {
         super();
         this.state = {
-            races: []
+            races: [],
+            isLoaded: false
         };
     }
-
-    componentDidMount(){
+    componentDidMount() {
         this.getRaces();
     };
-    
     getRaces() {
         var url = "http://ergast.com/api/f1/2013/results/1.json";
         $.get(url, (data) => {
-            this.setState({races: data.MRData.RaceTable.Races});
-            console.log("races", this.state.races);
+            this.setState({
+                races: data.MRData.RaceTable.Races,
+                isLoaded: true
+            });
         })
     }
-
     render() {
+        if (!this.state.isLoaded) {
+            return (
+                < Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            );
+        }
         return (
             <div>
                 <table>
@@ -51,9 +64,7 @@ export default class Races extends React.Component {
                         })}
                     </tbody>
                 </table>
-
             </div>
-
         );
     }
 }

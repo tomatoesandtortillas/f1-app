@@ -1,16 +1,18 @@
 import React from "react";
 import * as $ from "jquery";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 
 export default class Drivers extends React.Component {
     constructor() {
         super();
         this.state = {
             drivers: [],
-            season: ""
+            season: "",
+            isLoaded: false
         };
     }
-    displayDriverDetails() {
-    };
     componentDidMount() {
         this.getDrivers();
     }
@@ -18,11 +20,22 @@ export default class Drivers extends React.Component {
         var url = "http://ergast.com/api/f1/2013/driverStandings.json";
         $.get(url, (data) => {
             this.setState({
-                drivers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings, season: data.MRData.StandingsTable.season
+                drivers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings, season: data.MRData.StandingsTable.season,
+                isLoaded: true
             });
         })
     }
     render() {
+        if (!this.state.isLoaded) {
+            return (
+                < Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            );
+        }
         return (
             <div>
                 <table>
@@ -44,7 +57,7 @@ export default class Drivers extends React.Component {
                         })}
                     </tbody>
                 </table>
-            </div>
+            </div >
         );
     }
 }

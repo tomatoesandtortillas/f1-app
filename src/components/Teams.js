@@ -1,29 +1,41 @@
 import React from "react";
 import * as $ from "jquery";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 
 export default class Teams extends React.Component {
     constructor() {
         super();
         this.state = {
-            teams: []
+            teams: [],
+            isLoaded: false
         };
     }
-
     componentDidMount() {
         this.getTeams();
     }
-
     getTeams() {
         var url = "http://ergast.com/api/f1/2013/constructorStandings.json";
         $.get(url, (data) => {
             this.setState({
-                teams: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
+                teams: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+                isLoaded: true
             });
             console.log(this.state.teams);
         })
     }
-
     render() {
+        if (!this.state.isLoaded) {
+            return (
+                < Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            );
+        }
         return (
             <div>
                 <table>
