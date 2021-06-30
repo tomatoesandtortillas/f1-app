@@ -28,29 +28,14 @@ export default class App extends React.Component {
                             </ul>
                         </nav>
                     </div>
-                        <div className="content">
-                            <Route path="/" exact component={Welcome} />
-                            <Route path="/drivers" exact component={Drivers} />
-                            <Route path="/driversDetails/:id" exact component={DriverDetails} />
-                            {/* <Route path="/teams/teamsDetails/:id" component={teamURL} /> */}
-                            <Route path="/teams" component={Teams} />
-                            <Route path="/races" component={Races} />
-                        </div>
-                    <nav className="nav">
-                        <ul>
-                            <li><Link className="list-reset" to="/">Home</Link></li>
-                            <li><Link className="list-reset" to="/drivers">Drivers</Link></li>
-                            <li><Link className="list-reset" to="/teams">Teams</Link></li>
-                            <li><Link className="list-reset" to="/races">Races</Link></li>
-                        </ul>
-                    </nav>
-
-                    <Route path="/" exact component={Welcome} />
-                    <Route path="/drivers" exact component={Drivers} />
-                    <Route path="/driversDetails/:id" exact component={DriverDetails} />
-                    <Route path="/teamDetails/:id" component={TeamDetails} />
-                    <Route path="/teams" component={Teams} />
-                    <Route path="/races" component={Races} />
+                    <div className="content">
+                        <Route path="/" exact component={Welcome} />
+                        <Route path="/drivers" exact component={Drivers} />
+                        <Route path="/driversDetails/:id" exact component={DriverDetails} />
+                        <Route path="/teamDetails/:id" component={TeamDetails} />
+                        <Route path="/teams" component={Teams} />
+                        <Route path="/races" component={Races} />
+                    </div>
                 </div>
             </Router>
         );
