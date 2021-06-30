@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as $ from "jquery";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -49,7 +50,7 @@ export default class Drivers extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td>{driver.position}</td>
-                                    <td>{driver.Driver.givenName} {driver.Driver.familyName}</td>
+                                    <td><Link to={`/driversDetails/${driver.Driver.driverId}`}>{driver.Driver.givenName} {driver.Driver.familyName}</Link></td>
                                     <td>{driver.Constructors[0].name}</td>
                                     <td>{driver.points}</td>
                                 </tr>
