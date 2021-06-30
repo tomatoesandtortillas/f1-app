@@ -57,7 +57,7 @@ export default class TeamDetails extends React.Component {
                     <table>
                         <thead>
                             <tr>
-                                <td colSpan="2"><img alt="team logo" src="../assets/img/Red_Bull.png"></img>{this.state.team.name} {this.state.team.name}</td>
+                                <td colSpan="2"><img alt="team logo" src={`../assets/img/teams/${this.state.team.Constructor.name.replace(` `,`_`)}.png`}></img>{this.state.team.Constructor.name}</td>
                             </tr>
                         </thead>
                         <tbody>

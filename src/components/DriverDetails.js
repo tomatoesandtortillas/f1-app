@@ -44,7 +44,7 @@ export default class DriverDetails extends React.Component {
                     <table>
                         <thead>
                             <tr>
-                                <td colSpan="2"><img alt="driver picture" src="../assets/img/Sebastian_Vettel.jpg"></img>{this.state.driver.givenName} {this.state.driver.familyName}</td>
+                                <td colSpan="2"><img alt="driver picture" src={`../assets/img/${this.state.driver.givenName}_${this.state.driver.familyName}.jpg`}></img>{this.state.driver.givenName} {this.state.driver.familyName}</td>
                             </tr>
                         </thead>
                         <tbody>
