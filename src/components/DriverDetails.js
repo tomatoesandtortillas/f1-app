@@ -26,6 +26,7 @@ export default class DriverDetails extends React.Component {
         }
         )
     };
+    
     getRaces() {
         var url = `http://ergast.com/api/f1/2013/drivers/${this.props.match.params.id}/results.json`;
         $.get(url, (data) => {

@@ -1,6 +1,9 @@
 @import "variables";
+@import "topbar";
 
-
+@mixin border{
+    border: red 1px dotted;
+}
 @mixin list-reset {
     margin: 0;
     padding: 0;
@@ -8,32 +11,51 @@
     list-style-type: none;
     text-decoration: none;
 }
-body {
+@mixin margin-reset {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-h1 {
-    color: $font-color;
-    background-color: $base-color;
-}
-.header-bar {
-    width: 100%;
-    height: 50px;
-    background-color: teal;
-    padding: 0;
-    margin: 0;
-}
-.side-bar {
+@mixin flex-left {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+}
+body {
+    @include margin-reset;
+    @include flex-left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.side-bar {
+    margin-top: 0;
+    @include border();
+    position: fixed;
     width: 150px;
     height: 100%;
 }
-nav ul li {
-    @include list-reset;
-    .list-reset {
-        @include list-reset;
+.logo-div {
+    @include border();
+    width: auto;
+    height: 150px;
+    img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
     }
+}
+.content {
+    margin-top: 0;
+    margin-left: 150px;
+    width: 100%;
+    height: 100%;
+    .welcome-page {
+        h1 {
+            color: $font-color;
+            background-color: $base-color;
+        }
+    }
+}
+nav ul li, .list-reset {
+    @include list-reset;
 }
