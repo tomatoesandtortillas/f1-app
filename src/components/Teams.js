@@ -2,7 +2,7 @@ import React from "react";
 import * as $ from "jquery";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-
+import { Link } from "react-router-dom";
 
 export default class Teams extends React.Component {
     constructor() {
@@ -22,7 +22,7 @@ export default class Teams extends React.Component {
                 teams: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
                 isLoaded: true
             });
-            console.log(this.state.teams);
+            // console.log(this.state.teams);
         })
     }
     render() {
@@ -49,7 +49,7 @@ export default class Teams extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td>{team.position}</td>
-                                    <td>{team.Constructor.name}</td>
+                                    <td><Link to={`/teamDetails/${team.Constructor.constructorId}`} > {team.Constructor.name }</Link></td>
                                     <td>Details {team.Constructor.url}</td>
                                     <td>{team.points}</td>
                                 </tr>
