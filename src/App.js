@@ -21,10 +21,10 @@ export default class App extends React.Component {
                         </div>
                         <nav className="nav">
                             <ul>
-                                <li><Link className="list-reset" to="/">Home</Link></li>
-                                <li><Link className="list-reset" to="/drivers">Drivers</Link></li>
-                                <li><Link className="list-reset" to="/teams">Teams</Link></li>
-                                <li><Link className="list-reset" to="/races">Races</Link></li>
+                                <li><Link className="list-reset" to="/"><img src="../assets/img/icons/home.png"/>Home</Link></li>
+                                <li><Link className="list-reset" to="/drivers"><img/>Drivers</Link></li>
+                                <li><Link className="list-reset" to="/teams"><img/>Teams</Link></li>
+                                <li><Link className="list-reset" to="/races"><img/>Races</Link></li>
                             </ul>
                         </nav>
                     </div>
