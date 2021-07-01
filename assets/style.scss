@@ -1,7 +1,7 @@
 @import "variables";
 @import "topbar";
 
-@mixin border{
+@mixin border {
     border: red 1px dotted;
 }
 @mixin list-reset {
@@ -33,6 +33,39 @@ body {
     width: 150px;
     height: 100%;
 }
+.nav {
+    position: relative;
+    text-align: left;
+    font-weight: bold;
+    ul {
+        padding-inline-start: 0;
+        li {
+            @include border();
+            padding: 10px;
+            margin: 10px;
+            width: max-content;
+            height: max-content;
+            a {
+                text-transform: uppercase;
+                text-decoration: none;
+                letter-spacing: 0.4em;
+                color: $font-color;
+                display: block;
+                transition: all ease-out 300ms;
+            }
+            &.active a {
+                color: $base-color;
+              }
+              &:not(.active)::after {
+                opacity: 0.2;
+              }
+              
+              &:not(.active):hover a {
+                color: $base-color;
+              }
+        }
+    }
+}
 .logo-div {
     @include border();
     width: auto;
@@ -56,6 +89,7 @@ body {
         }
     }
 }
-nav ul li, .list-reset {
+nav ul li,
+.list-reset {
     @include list-reset;
 }
