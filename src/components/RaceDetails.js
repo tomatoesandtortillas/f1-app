@@ -1,12 +1,14 @@
 import React from "react";
 import * as $ from "jquery";
+import Loader from "react-loader-spinner";
 
 export default class RaceDetails extends React.Component {
     constructor() {
         super();
         this.state = {
             raceResults:[],
-            raceQualification:[]
+            raceQualification:[],
+            isLoaded: false
         }
     };
     componentDidMount(){
@@ -14,7 +16,9 @@ export default class RaceDetails extends React.Component {
         
     };
     getRaceDetails(id) {
-        
+        if (!this.state.isLoaded) {
+            return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+          }        
         var urlRaceQualification = $.ajax(`http://ergast.com/api/f1/2013/${id}/qualifying.json`);
         var urlRaceResults = $.ajax(`http://ergast.com/api/f1/2013/${id}/results.json`);
 
@@ -32,7 +36,7 @@ export default class RaceDetails extends React.Component {
     render () {
         return (
             <div>
-                
+
             </div>
         );
 
