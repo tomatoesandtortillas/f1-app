@@ -7,39 +7,25 @@ export default class TeamDetails extends React.Component {
         super();
         this.state = {
             team: [],
+            results: [],
             isLoaded: false
-            // constructors: [],
-            // races: []
         }
     };
-
     componentDidMount() {
-        this.getTeamDetails();
-        this.getTeamResults();
-        console.log("team", this.props.match.params.id);
+        this.getTeamDetails(this.props.match.params.id);
     }
+    getTeamDetails(id) {
+        var urlTeamDetails = $.ajax(`http://ergast.com/api/f1/2013/constructors/${id}/constructorStandings.json`);
+        var urlTeamResults = $.ajax(`http://ergast.com/api/f1/2013/constructors/${id}/results.json`);
 
-    getTeamDetails() {
-        var url = `http://ergast.com/api/f1/2013/constructors/${this.props.match.params.id}/constructorStandings.json`
-        $.get(url, (data) => {
+        $.when(urlTeamDetails,urlTeamResults).done(function(dataTeamDetails, dataTeamResults){
             this.setState({
-                team: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[0],
-                isLoaded: true
-            });
-        }
-        )
+                team: dataTeamDetails[0].MRData.StandingsTable.StandingsLists[0].ConstructorStandings[0],
+                results: dataTeamResults[0].MRData.RaceTable,
+                isLoaded: true 
+            })
+        }.bind(this));
     };
-
-    getTeamResults() {
-        var url = `http://ergast.com/api/f1/2013constructors/${this.props.match.params.id}/results.json`;
-        $.get(url, (data) => {
-            this.setState({
-                results: data.MRData.RaceTable.Races
-            });
-        }
-        )
-    };
-
     render() {
         if (!this.state.isLoaded) {
             return (
@@ -80,7 +66,7 @@ export default class TeamDetails extends React.Component {
                         </tbody>
                     </table>
                 </div>
-                {/* <div>
+                <div>
                     <table>
                         <thead>
                             <tr>
@@ -89,28 +75,26 @@ export default class TeamDetails extends React.Component {
                             <tr>
                                 <th>Round</th>
                                 <th>GrandPrix</th>
-                                <th>Team</th>
-                                <th>Grid</th>
-                                <th>Race</th>
+                                <th>{this.state.results.Races[0].Results[0].Driver.familyName}</th>
+                                <th>{this.state.results.Races[0].Results[1].Driver.familyName}</th>
+                                <th>Points</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.races.map((race, i) => {
-                                console.log("metoda races", this.state.races);
-
+                            {this.state.results.Races.map((race, i) => {
                                 return (
                                     <tr key={i}>
                                         <td>{race.round}</td>
                                         <td>{race.raceName}</td>
-                                        <td>{race.Results[0].Constructor.name}</td>
-                                        <td>{race.Results[0].grid}</td>
                                         <td>{race.Results[0].position}</td>
+                                        <td>{race.Results[1].position}</td>
+                                        <td>{parseInt(race.Results[0].points)+parseInt(race.Results[1].points)}</td>
                                     </tr>
                                 );
                             })}
                         </tbody>
                     </table>
-                </div> */}
+                </div>
             </div>
         );
     }
