@@ -5,6 +5,7 @@ import Races from "./components/Races";
 import Welcome from "./components/Welcome";
 import DriverDetails from "./components/DriverDetails";
 import TeamDetails from "./components/TeamDetails";
+import RaceDetails from "./components/RaceDetails";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../assets/style.scss";
 
@@ -32,9 +33,10 @@ export default class App extends React.Component {
                         <Route path="/" exact component={Welcome} />
                         <Route path="/drivers" exact component={Drivers} />
                         <Route path="/driversDetails/:id" exact component={DriverDetails} />
-                        <Route path="/teamDetails/:id" component={TeamDetails} />
+                        <Route path="/teamDetails/:id" exact component={TeamDetails} />
                         <Route path="/teams" component={Teams} />
                         <Route path="/races" component={Races} />
+                        <Route path="/raceDetails/:id" exact component={RaceDetails} />
                     </div>
                 </div>
             </Router>

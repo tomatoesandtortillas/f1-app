@@ -2,6 +2,7 @@ import React from "react";
 import * as $ from "jquery";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import {Link} from "react-router-dom";
 
 
 export default class Races extends React.Component {
@@ -55,7 +56,7 @@ export default class Races extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td>{race.round}</td>
-                                    <td>{race.raceName}</td>
+                                    <td><Link to={`/raceDetails/${race.Circuit.circuitId}`}>{race.raceName}</Link></td>
                                     <td>{race.Circuit.circuitName}</td>
                                     <td>{race.date}</td>
                                     <td>{race.Results[0].Driver.familyName}</td>
