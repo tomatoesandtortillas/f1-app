@@ -2,6 +2,7 @@ import React from "react";
 import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 
+
 export default class DriverDetails extends React.Component {
     constructor() {
         super();

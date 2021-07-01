@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Loader from "react-loader-spinner";
+import Flag from 'react-flagkit';
 
 export default class RaceDetails extends React.Component {
     constructor() {
@@ -39,10 +40,10 @@ export default class RaceDetails extends React.Component {
         return (
             <div>
                 <div>
-                    <img
-                        alt="race picture"
-                        src={`...`}
-                    ></img>
+                    <div>
+                     zastava
+
+                    </div>
                     <table>
                         <thead>
                             <tr>
@@ -73,7 +74,7 @@ export default class RaceDetails extends React.Component {
                 </div>
 
                 <div>
-                    
+
                 </div>
                 <div>
 
