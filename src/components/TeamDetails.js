@@ -3,11 +3,10 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-<<<<<<< HEAD
+
 import Flag from "react-flagkit";
-=======
+
 import { Link } from "react-router-dom";
->>>>>>> 2d1b19a744639b4de192d36161bb60ddc7c2e62d
 
 export default class TeamDetails extends React.Component {
   constructor() {
@@ -21,7 +20,6 @@ export default class TeamDetails extends React.Component {
   }
   componentDidMount() {
     this.getTeamDetails(this.props.match.params.id);
-    
   }
   getTeamDetails(id) {
     var urlTeamDetails = $.ajax(
@@ -46,7 +44,7 @@ export default class TeamDetails extends React.Component {
       }.bind(this)
     );
   }
-  
+
   render() {
     if (!this.state.isLoaded) {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
@@ -55,19 +53,17 @@ export default class TeamDetails extends React.Component {
     return (
       <div>
         <div>
-                  <img
-                    alt="team logo"
-                    src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
-                      ` `,
-                      `_`
-                    )}.png`}
-                  ></img>
+          <img
+            alt="team logo"
+            src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
+              ` `,
+              `_`
+            )}.png`}
+          ></img>
           <table>
             <thead>
               <tr>
-                <td colSpan="2">
-                  {this.state.team.Constructor.name}
-                </td>
+                <td colSpan="2">{this.state.team.Constructor.name}</td>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +94,7 @@ export default class TeamDetails extends React.Component {
           <table>
             <thead>
               <tr>
-                <td>Formula 1 2013 Results</td>
+                <td colSpan="5">Formula 1 2013 Results</td>
               </tr>
               <tr>
                 <th>Round</th>
@@ -118,29 +114,34 @@ export default class TeamDetails extends React.Component {
                   <tr key={i}>
                     <td>{race.round}</td>
                     <td>
-<<<<<<< HEAD
                       {this.state.flags.map((flag, i) => {
-                        
-                        if (race.Circuit.Location.country === flag.en_short_name) {
+                        if (
+                          race.Circuit.Location.country === flag.en_short_name
+                        ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         }
-                        if (race.Circuit.Location.country === "UK" &&
-                          flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                        if (
+                          race.Circuit.Location.country === "UK" &&
+                          flag.en_short_name ===
+                            "United Kingdom of Great Britain and Northern Ireland"
+                        ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         }
-                        if (race.Circuit.Location.country === "Korea" &&
-                          flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                        if (
+                          race.Circuit.Location.country === "Korea" &&
+                          flag.en_short_name ===
+                            "Korea (Democratic People's Republic of)"
+                        ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
-                        }  
+                        }
                       })}
                     </td>
-                    <td>{race.raceName}</td>
-=======
+                    <td>
                       <Link to={`/raceDetails/${race.round}`}>
                         {race.raceName}
                       </Link>
                     </td>
->>>>>>> 2d1b19a744639b4de192d36161bb60ddc7c2e62d
+
                     <td>{race.Results[0].position}</td>
                     <td>{race.Results[1].position}</td>
                     <td>
