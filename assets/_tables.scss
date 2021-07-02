@@ -1,0 +1,43 @@
+.div-tab {
+    border: 1px solid blue;
+    width: 100%;
+    border-top: 1px solid rgb(92, 107, 71);
+    border-collapse: collapse;
+    margin-right: 20px;
+    margin-left: 20px;
+   
+    a {
+        text-decoration: none;
+    }
+    tr:nth-child(even){
+        background-color: rgb(230, 230, 230);
+    }
+    tr:nth-child(odd){
+        background-color: rgb(250, 250, 250);
+    }
+    thead {
+        tr{
+            background-color: rgb(200, 200, 200);
+            padding: 20px;
+            td {
+                background-color: rgb(190, 190, 190);
+            }
+            
+            
+        }
+    }
+   
+
+}
+.header h1 {
+    font-style: italic;
+    color: white;
+    padding-left: 25px;
+    font-size: 50px;
+    text-shadow: 5px 5px #3f3d3d;
+     
+}
+.header {
+    background-color: gray;
+}
+

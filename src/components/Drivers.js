@@ -45,11 +45,14 @@ export default class Drivers extends React.Component {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
     }
     return (
-      <div>
-        <table>
+      <div className="header">
+          
+              <h1>Drivers Championship</h1>
+        
+        <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="4">
+              <td colSpan="5">
                 Drivers Championship Standings - {this.state.season}
               </td>
             </tr>
