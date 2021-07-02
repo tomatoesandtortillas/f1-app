@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import Flag from "react-flagkit";
 
 export default class TeamDetails extends React.Component {
   constructor() {
@@ -10,11 +11,13 @@ export default class TeamDetails extends React.Component {
     this.state = {
       team: [],
       results: [],
+      flags: [],
       isLoaded: false,
     };
   }
   componentDidMount() {
     this.getTeamDetails(this.props.match.params.id);
+    
   }
   getTeamDetails(id) {
     var urlTeamDetails = $.ajax(
@@ -23,18 +26,23 @@ export default class TeamDetails extends React.Component {
     var urlTeamResults = $.ajax(
       `http://ergast.com/api/f1/2013/constructors/${id}/results.json`
     );
+    var urlFlag = $.ajax(
+      `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`
+    );
 
-    $.when(urlTeamDetails, urlTeamResults).done(
-      function (dataTeamDetails, dataTeamResults) {
+    $.when(urlTeamDetails, urlTeamResults, urlFlag).done(
+      function (dataTeamDetails, dataTeamResults, dataflags) {
         this.setState({
           team: dataTeamDetails[0].MRData.StandingsTable.StandingsLists[0]
             .ConstructorStandings[0],
           results: dataTeamResults[0].MRData.RaceTable,
+          flags: JSON.parse(dataflags[0]),
           isLoaded: true,
         });
       }.bind(this)
     );
   }
+  
   render() {
     if (!this.state.isLoaded) {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
@@ -43,10 +51,6 @@ export default class TeamDetails extends React.Component {
     return (
       <div>
         <div>
-          <table>
-            <thead>
-              <tr>
-                <td colSpan="2">
                   <img
                     alt="team logo"
                     src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
@@ -54,6 +58,10 @@ export default class TeamDetails extends React.Component {
                       `_`
                     )}.png`}
                   ></img>
+          <table>
+            <thead>
+              <tr>
+                <td colSpan="2">
                   {this.state.team.Constructor.name}
                 </td>
               </tr>
@@ -90,7 +98,7 @@ export default class TeamDetails extends React.Component {
               </tr>
               <tr>
                 <th>Round</th>
-                <th>GrandPrix</th>
+                <th colSpan="2">GrandPrix</th>
                 <th>
                   {this.state.results.Races[0].Results[0].Driver.familyName}
                 </th>
@@ -105,6 +113,22 @@ export default class TeamDetails extends React.Component {
                 return (
                   <tr key={i}>
                     <td>{race.round}</td>
+                    <td>
+                      {this.state.flags.map((flag, i) => {
+                        
+                        if (race.Circuit.Location.country === flag.en_short_name) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                        if (race.Circuit.Location.country === "UK" &&
+                          flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                        if (race.Circuit.Location.country === "Korea" &&
+                          flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }  
+                      })}
+                    </td>
                     <td>{race.raceName}</td>
                     <td>{race.Results[0].position}</td>
                     <td>{race.Results[1].position}</td>

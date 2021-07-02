@@ -5,16 +5,20 @@ import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import Flag from "react-flagkit";
+
 export default class Teams extends React.Component {
   constructor() {
     super();
     this.state = {
       teams: [],
       isLoaded: false,
+      flags: [],
     };
   }
   componentDidMount() {
     this.getTeams();
+    this.getFlags();
   }
   getTeams() {
     var url = "http://ergast.com/api/f1/2013/constructorStandings.json";
@@ -27,6 +31,17 @@ export default class Teams extends React.Component {
       // console.log(this.state.teams);
     });
   }
+  getFlags() {
+    var urlFlag =
+      "https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json";
+    $.get(urlFlag, (data) => {
+      var flags = JSON.parse(data);
+      this.setState({
+        flags: flags,
+      });
+    });
+  }
+
   render() {
     if (!this.state.isLoaded) {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
@@ -44,6 +59,19 @@ export default class Teams extends React.Component {
               return (
                 <tr key={i}>
                   <td>{team.position}</td>
+                  <td>
+                    {this.state.flags.map((flag, i) => {
+                      if (team.Constructor.nationality === flag.nationality) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                      if (
+                        team.Constructor.nationality === "British" &&
+                        flag.nationality === "British, UK"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                    })}
+                  </td>
                   <td>
                     <Link to={`/teamDetails/${team.Constructor.constructorId}`}>
                       {" "}
