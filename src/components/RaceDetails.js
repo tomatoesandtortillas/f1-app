@@ -1,6 +1,8 @@
 import React from "react";
 import * as $ from "jquery";
 import Loader from "react-loader-spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default class RaceDetails extends React.Component {
   constructor() {
@@ -62,7 +64,12 @@ export default class RaceDetails extends React.Component {
             <tr>
               <td>Full Report:</td>
               <td>
-                <a href={this.state.raceQualification.Circuit.url}>link</a>
+                <a
+                  href={this.state.raceQualification.Circuit.url}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faExternalLinkAlt} />
+                </a>
               </td>
             </tr>
           </tbody>

@@ -3,102 +3,104 @@
 @import "welcome";
 
 @mixin border {
-    border: red 1px dotted;
+  border: red 1px dotted;
 }
 @mixin list-reset {
-    margin: 0;
-    padding: 0;
-    text-indent: 0;
-    list-style-type: none;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+  text-decoration: none;
 }
 @mixin margin-reset {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 @mixin flex-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 body {
-    @include margin-reset;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  @include margin-reset;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .main {
-    background-color: $background-color;
+  background-color: $background-color;
 }
 .side-bar {
-    margin-top: 50px;
-    @include border();
-    position: fixed;
-    width: 175px;
-    height: 100%;
+  margin-top: 50px;
+  @include border();
+  position: fixed;
+  width: 175px;
+  height: 100%;
 }
 .nav {
-    position: relative;
-    text-align: left;
-    font-weight: bold;
-    ul {
-        padding-inline-start: 0;
-        li {
-            @include border();
-            padding: 10px;
-            margin: 10px;
-            width: max-content;
-            height: max-content;
-            display: flex;
-            flex-direction: row;
-            img {
-                margin: 0 10px 0 0;
-                padding: 0;
-                padding: 0;
-                width: 18px;
-                overflow: hidden;
-            }
-            a {
-                text-align: center;
-                text-transform: uppercase;
-                text-decoration: none;
-                letter-spacing: 0.4em;
-                color: $font-color;
-                display: block;
-                transition: all ease-out 300ms;
-            }
-            &.active a {
-                color: $base-color;
-            }
-            &:not(.active)::after {
-                opacity: 0.2;
-            }
+  position: relative;
+  text-align: left;
+  font-weight: bold;
+  ul {
+    padding-inline-start: 0;
+    li {
+      @include border();
+      padding: 10px;
+      margin: 10px;
+      width: max-content;
+      height: max-content;
+      display: flex;
+      flex-direction: row;
+      img {
+        margin: 0 10px 0 0;
+        padding: 0;
+        padding: 0;
+        width: 25px;
+        // height: 25px;
+        overflow: hidden;
+      }
+      a {
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.4em;
+        color: $font-color;
+        display: block;
+        transition: all ease-out 300ms;
+      }
+      &.active a {
+        color: $base-color;
+      }
+      &:not(.active)::after {
+        opacity: 0.2;
+      }
 
-            &:not(.active):hover a {
-                color: $base-color;
-            }
-        }
+      &:not(.active):hover a {
+        color: $base-color;
+      }
     }
+  }
 }
 .logo-div {
-    @include border();
+  @include border();
+  width: auto;
+  height: 150px;
+  img {
     width: auto;
-    height: 150px;
-    img {
-        width: auto;
-        height: auto;
-        max-height: 100%;
-        max-width: 100%;
-    }
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 .content {
-    margin-top: 0;
-    padding-top: 50px;
-    margin-left: 175px;
-    width: 100%;
-    height: 100vh;
-    @include border();
+  margin-top: 0;
+  padding-top: 50px;
+  margin-left: 175px;
+  width: 100%;
+  height: 100vh;
+  @include border();
 }
 nav ul li,
 .list-reset {
-    @include list-reset;
+  @include list-reset;
 }

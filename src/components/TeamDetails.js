@@ -1,6 +1,8 @@
 import React from "react";
 import * as $ from "jquery";
 import Loader from "react-loader-spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default class TeamDetails extends React.Component {
   constructor() {
@@ -71,7 +73,11 @@ export default class TeamDetails extends React.Component {
               </tr>
               <tr>
                 <td>History:</td>
-                <td>url</td>
+                <td>
+                  <a href={this.state.team.Constructor.url} target="_blank">
+                    <FontAwesomeIcon icon={faExternalLinkAlt} />
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
