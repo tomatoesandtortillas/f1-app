@@ -127,7 +127,7 @@ export default class RaceDetails extends React.Component {
         </table>
 
         <div>
-          <table>
+          <table className="div-tab">
             <thead>
               <tr>
                 <td colSpan="4">Qualifying Results</td>
@@ -181,7 +181,7 @@ export default class RaceDetails extends React.Component {
           </table>
         </div>
         <div>
-          <table>
+          <table className="div-tab">
             <thead>
               <tr>
                 <th colSpan="5">Race Results</th>

@@ -91,7 +91,7 @@ export default class TeamDetails extends React.Component {
           </table>
         </div>
         <div>
-          <table>
+          <table className="div-tab">
             <thead>
               <tr>
                 <td colSpan="5">Formula 1 2013 Results</td>

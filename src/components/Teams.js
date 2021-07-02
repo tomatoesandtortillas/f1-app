@@ -47,7 +47,7 @@ export default class Teams extends React.Component {
     }
     return (
       <div>
-        <table>
+        <table className="div-tab">
           <thead>
             <tr>
               <td colSpan="4">Constructor Championship Standings - 2013</td>

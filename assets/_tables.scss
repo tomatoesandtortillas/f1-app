@@ -1,32 +1,45 @@
 .div-tab {
-    border: 1px solid blue;
+    border: 1px solid rgb(33, 33, 34);
+    border-radius: 15px 5px 5px 5px;
     width: 100%;
-    border-top: 1px solid rgb(92, 107, 71);
+    border-top: 1px solid rgb(186, 189, 186);
+    border-left: 1px solid rgb(186, 189, 186);
     border-collapse: collapse;
     margin-right: 20px;
     margin-left: 20px;
-   
+    
     a {
         text-decoration: none;
+        color:rgb(83, 83, 82);
     }
     tr:nth-child(even){
         background-color: rgb(230, 230, 230);
+        font-weight: 700;
+        color:rgb(83, 83, 82);
     }
     tr:nth-child(odd){
         background-color: rgb(250, 250, 250);
+        font-weight: 700;
+        color:rgb(83, 83, 82);
     }
+
     thead {
         tr{
             background-color: rgb(200, 200, 200);
-            padding: 20px;
+            
             td {
                 background-color: rgb(190, 190, 190);
-            }
-            
-            
+                padding: 5px;
+                font-size: 22px;
+            }          
         }
     }
-   
+    tbody {
+        td {
+            padding: 5px;
+        }
+       
+    }  
 
 }
 .header h1 {
@@ -35,9 +48,14 @@
     padding-left: 25px;
     font-size: 50px;
     text-shadow: 5px 5px #3f3d3d;
+
+    //font-family: lobster;
      
 }
 .header {
     background-color: gray;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: #050505;
 }
+
 
