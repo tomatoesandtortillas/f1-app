@@ -22,25 +22,36 @@ export default class App extends React.Component {
             <nav className="nav">
               <ul>
                 <li>
-                  <img src="../assets/img/icons/home.png" />
+                  <div className="imgLink">
+                    <img src="../assets/img/icons/home.png" />
+                  </div>
+
                   <Link className="list-reset" to="/">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <img src="../assets/img/icons/helmet.png" />
+                  <div className="imgLink">
+                    <img src="../assets/img/icons/helmet.png" />
+                  </div>
                   <Link className="list-reset" to="/drivers">
                     Drivers
                   </Link>
                 </li>
                 <li>
-                  <img src="../assets/img/icons/timovi.png" />
+                  <div className="imgLink">
+                    <img src="../assets/img/icons/timovi.png" />
+                  </div>
+
                   <Link className="list-reset" to="/teams">
                     Teams
                   </Link>
                 </li>
                 <li>
-                  <img src="../assets/img/icons/checkered-flag.png" />
+                  <div className="imgLink">
+                    <img src="../assets/img/icons/checkered-flag.png" />
+                  </div>
+
                   <Link className="list-reset" to="/races">
                     Races
                   </Link>

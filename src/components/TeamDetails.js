@@ -3,7 +3,11 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+<<<<<<< HEAD
 import Flag from "react-flagkit";
+=======
+import { Link } from "react-router-dom";
+>>>>>>> 2d1b19a744639b4de192d36161bb60ddc7c2e62d
 
 export default class TeamDetails extends React.Component {
   constructor() {
@@ -114,6 +118,7 @@ export default class TeamDetails extends React.Component {
                   <tr key={i}>
                     <td>{race.round}</td>
                     <td>
+<<<<<<< HEAD
                       {this.state.flags.map((flag, i) => {
                         
                         if (race.Circuit.Location.country === flag.en_short_name) {
@@ -130,6 +135,12 @@ export default class TeamDetails extends React.Component {
                       })}
                     </td>
                     <td>{race.raceName}</td>
+=======
+                      <Link to={`/raceDetails/${race.round}`}>
+                        {race.raceName}
+                      </Link>
+                    </td>
+>>>>>>> 2d1b19a744639b4de192d36161bb60ddc7c2e62d
                     <td>{race.Results[0].position}</td>
                     <td>{race.Results[1].position}</td>
                     <td>
