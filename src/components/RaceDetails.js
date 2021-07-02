@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import Flag from "react-flagkit";
 
 export default class RaceDetails extends React.Component {
   constructor() {
@@ -11,10 +12,12 @@ export default class RaceDetails extends React.Component {
       raceResults: [],
       raceQualification: [],
       isLoaded: false,
+      flags: [],
     };
   }
   componentDidMount() {
     this.getRaceDetails(this.props.match.params.id);
+    this.getFlags();
   }
   getRaceDetails(id) {
     var urlRaceQualification = $.ajax(
@@ -34,14 +37,62 @@ export default class RaceDetails extends React.Component {
       }.bind(this)
     );
   }
+
+  getFlags() {
+    var urlFlag =
+      "https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json";
+    $.get(urlFlag, (data) => {
+      let flags = JSON.parse(data);
+      this.setState({
+        flags: flags,
+      });
+    });
+  }
+
   render() {
     if (!this.state.isLoaded) {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
     }
 
+    console.log(this.state.raceQualification.Circuit.Location.country);
+    console.log(this.state.flags);
     return (
       <div>
-        <img alt="race picture" src={`...`}></img>
+        {/* <img alt="race picture" src={`...`} /> */}
+        <div>
+          {this.state.flags.map((flag, i) => {
+            console.log(this.state.raceQualification.Circuit.Location.country);
+            if (
+              this.state.raceQualification.Circuit.Location.country ===
+              flag.en_short_name
+            ) {
+              return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+            } else if (
+              this.state.raceQualification.Circuit.Location.country == "UK" &&
+              flag.en_short_name ==
+                "United Kingdom of Great Britain and Northern Ireland"
+            ) {
+              return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+            } else if (
+              this.state.raceQualification.Circuit.Location.country ==
+                "Korea" &&
+              flag.en_short_name == "Korea (Democratic People's Republic of)"
+            ) {
+              return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+            } else if (
+              this.state.raceQualification.Circuit.Location.country == "UAE" &&
+              flag.en_short_name == "United Arab Emirates"
+            ) {
+              return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+            } else if (
+              this.state.raceQualification.Circuit.Location.country == "USA" &&
+              flag.en_short_name == "United States of America"
+            ) {
+              return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+            }
+          })}
+        </div>
+
         <table>
           <thead>
             <tr>
@@ -79,7 +130,7 @@ export default class RaceDetails extends React.Component {
           <table>
             <thead>
               <tr>
-                <td>Qualifying Results</td>
+                <td colSpan="4">Qualifying Results</td>
               </tr>
               <tr>
                 <th>Pos</th>
@@ -100,7 +151,26 @@ export default class RaceDetails extends React.Component {
                   return (
                     <tr key={i}>
                       <td>{driver.position}</td>
-                      <td>{driver.Driver.driverId}</td>
+                      <td>
+                        {this.state.flags.map((flag, i) => {
+                          if (driver.Driver.nationality === flag.nationality) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                          if (
+                            driver.Driver.nationality === "British" &&
+                            flag.nationality === "British, UK"
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                          if (
+                            driver.Driver.nationality === "Dutch" &&
+                            flag.nationality === "Dutch, Netherlandic"
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                        })}
+                        {driver.Driver.familyName}
+                      </td>
                       <td>{driver.Constructor.name}</td>
                       <td>{bestTime[0]}</td>
                     </tr>
@@ -114,7 +184,7 @@ export default class RaceDetails extends React.Component {
           <table>
             <thead>
               <tr>
-                <th>Race Results</th>
+                <th colSpan="5">Race Results</th>
               </tr>
               <tr>
                 <th>Pos</th>
@@ -129,7 +199,28 @@ export default class RaceDetails extends React.Component {
                 return (
                   <tr key={i}>
                     <td>{raceResult.position}</td>
-                    <td>{raceResult.Driver.familyName}</td>
+                    <td>
+                      {this.state.flags.map((flag, i) => {
+                        if (
+                          raceResult.Driver.nationality === flag.nationality
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                        if (
+                          raceResult.Driver.nationality === "British" &&
+                          flag.nationality === "British, UK"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                        if (
+                          raceResult.Driver.nationality === "Dutch" &&
+                          flag.nationality === "Dutch, Netherlandic"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                      })}
+                      {raceResult.Driver.familyName}
+                    </td>
                     <td>{raceResult.Constructor.name}</td>
                     <td>
                       {raceResult.Time !== undefined
