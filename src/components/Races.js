@@ -62,41 +62,35 @@ export default class Races extends React.Component {
                 <tr key={i}>
                   <td>{race.round}</td>
                   <td>
-                    {this.state.flags.map(
-                      (flag, i) => {
-                        if (
-                          race.Circuit.Location.country === flag.en_short_name
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        } else if (
-                          race.Circuit.Location.country == "UK" &&
-                          flag.en_short_name ==
-                            "United Kingdom of Great Britain and Northern Ireland"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        } else if (
-                          race.Circuit.Location.country == "Korea" &&
-                          flag.en_short_name ==
-                            "Korea (Democratic People's Republic of)"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        } else if (
-                          race.Circuit.Location.country == "UAE" &&
-                          flag.en_short_name == "United Arab Emirates"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        } else if (
-                          race.Circuit.Location.country == "USA" &&
-                          flag.en_short_name == "United States of America"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        }
+                    {this.state.flags.map((flag, i) => {
+                      if (
+                        race.Circuit.Location.country === flag.en_short_name
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      } else if (
+                        race.Circuit.Location.country == "UK" &&
+                        flag.en_short_name ==
+                          "United Kingdom of Great Britain and Northern Ireland"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      } else if (
+                        race.Circuit.Location.country == "Korea" &&
+                        flag.en_short_name ==
+                          "Korea (Democratic People's Republic of)"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      } else if (
+                        race.Circuit.Location.country == "UAE" &&
+                        flag.en_short_name == "United Arab Emirates"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      } else if (
+                        race.Circuit.Location.country == "USA" &&
+                        flag.en_short_name == "United States of America"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
                       }
-
-                      // if(race.Circuit.Location.country){
-                      //     return <Flag key={i} country={flag.alpha_2_code} />;
-                      // }
-                    )}
+                    })}
                     <Link to={`/raceDetails/${race.round}`}>
                       {race.raceName}
                     </Link>

@@ -24,7 +24,6 @@ export default class Teams extends React.Component {
           data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
         isLoaded: true,
       });
-      // console.log(this.state.teams);
     });
   }
   render() {

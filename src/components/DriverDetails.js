@@ -3,6 +3,9 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import Flag from "react-flagkit";
+
 export default class DriverDetails extends React.Component {
   constructor() {
     super();
@@ -11,6 +14,7 @@ export default class DriverDetails extends React.Component {
       constructors: [],
       races: [],
       isLoaded: false,
+      flags: [],
     };
   }
 
@@ -25,9 +29,12 @@ export default class DriverDetails extends React.Component {
     var urlDriversRaces = $.ajax(
       `http://ergast.com/api/f1/2013/drivers/${id}/results.json`
     );
+    var urlFlag = $.ajax(
+      `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`
+    );
 
-    $.when(urlDriversDetails, urlDriversRaces).done(
-      function (dataDriversDetails, dataDriversRaces) {
+    $.when(urlDriversDetails, urlDriversRaces, urlFlag).done(
+      function (dataDriversDetails, dataDriversRaces, dataFlags) {
         this.setState({
           driver:
             dataDriversDetails[0].MRData.StandingsTable.StandingsLists[0]
@@ -36,31 +43,12 @@ export default class DriverDetails extends React.Component {
             dataDriversDetails[0].MRData.StandingsTable.StandingsLists[0]
               .DriverStandings[0].Constructors[0],
           races: dataDriversRaces[0].MRData.RaceTable.Races,
+          flags: JSON.parse(dataFlags[0]),
           isLoaded: true,
         });
       }.bind(this)
     );
   }
-  //     $.get(url, (data) => {
-  //       this.setState({
-  //         driver:
-  //           data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
-  //             .Driver,
-  //         constructor:
-  //           data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
-  //             .Constructors[0],
-  //       });
-  //     });
-  //   }
-
-  //   getRaces() {
-  //     var url = `http://ergast.com/api/f1/2013/drivers/${this.props.match.params.id}/results.json`;
-  //     $.get(url, (data) => {
-  //       this.setState({
-  //         races: data.MRData.RaceTable.Races,
-  //       });
-  //     });
-  //   }
 
   render() {
     if (!this.state.isLoaded) {
@@ -81,6 +69,23 @@ export default class DriverDetails extends React.Component {
               <tr>
                 <td colSpan="2">
                   {this.state.driver.givenName} {this.state.driver.familyName}
+                  {this.state.flags.map((flag, i) => {
+                    if (this.state.driver.nationality === flag.nationality) {
+                      return <Flag key={i} country={flag.alpha_2_code} />;
+                    }
+                    if (
+                      this.state.driver.nationality === "British" &&
+                      flag.nationality === "British, UK"
+                    ) {
+                      return <Flag key={i} country={flag.alpha_2_code} />;
+                    }
+                    if (
+                      this.state.driver.nationality === "Dutch" &&
+                      flag.nationality === "Dutch, Netherlandic"
+                    ) {
+                      return <Flag key={i} country={flag.alpha_2_code} />;
+                    }
+                  })}
                 </td>
               </tr>
             </thead>
@@ -112,7 +117,7 @@ export default class DriverDetails extends React.Component {
           <table>
             <thead>
               <tr>
-                <td>Formula 1 2013 Results</td>
+                <td colSpan="5">Formula 1 2013 Results</td>
               </tr>
               <tr>
                 <th>Round</th>
@@ -127,7 +132,40 @@ export default class DriverDetails extends React.Component {
                 return (
                   <tr key={i}>
                     <td>{race.round}</td>
-                    <td>{race.raceName}</td>
+                    <td>
+                      {this.state.flags.map((flag, i) => {
+                        if (
+                          race.Circuit.Location.country === flag.en_short_name
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        } else if (
+                          race.Circuit.Location.country == "UK" &&
+                          flag.en_short_name ==
+                            "United Kingdom of Great Britain and Northern Ireland"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        } else if (
+                          race.Circuit.Location.country == "Korea" &&
+                          flag.en_short_name ==
+                            "Korea (Democratic People's Republic of)"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        } else if (
+                          race.Circuit.Location.country == "UAE" &&
+                          flag.en_short_name == "United Arab Emirates"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        } else if (
+                          race.Circuit.Location.country == "USA" &&
+                          flag.en_short_name == "United States of America"
+                        ) {
+                          return <Flag key={i} country={flag.alpha_2_code} />;
+                        }
+                      })}
+                      <Link to={`/raceDetails/${race.round}`}>
+                        {race.raceName}
+                      </Link>
+                    </td>
                     <td>{race.Results[0].Constructor.name}</td>
                     <td>{race.Results[0].grid}</td>
                     <td>{race.Results[0].position}</td>

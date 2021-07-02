@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default class TeamDetails extends React.Component {
   constructor() {
@@ -105,7 +106,11 @@ export default class TeamDetails extends React.Component {
                 return (
                   <tr key={i}>
                     <td>{race.round}</td>
-                    <td>{race.raceName}</td>
+                    <td>
+                      <Link to={`/raceDetails/${race.round}`}>
+                        {race.raceName}
+                      </Link>
+                    </td>
                     <td>{race.Results[0].position}</td>
                     <td>{race.Results[1].position}</td>
                     <td>
