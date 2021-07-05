@@ -1,0 +1,41 @@
+.div-details {
+    border-bottom: 1px solid black;
+    img {                   
+        width: 50%;
+        max-height: 50%;
+    td, th {
+        padding: 0.5rem;
+        text-align: left;
+    }
+}
+}
+
+.div-flex {
+    display: flex;
+    background-color: rgb(158, 156, 156);
+   
+
+    .div-small {
+        flex-basis: 15%;
+        background-color: rgb(106, 103, 103);
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        
+        
+    }
+    .div-big {
+        flex-basis: 84%;
+        margin: 10px;
+        
+    }
+}
+// thead {
+//     tr {
+//         td {
+          
+//         }
+//     }
+// }
+
+

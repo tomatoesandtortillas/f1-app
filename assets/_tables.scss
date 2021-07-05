@@ -5,8 +5,9 @@
     border-top: 1px solid rgb(186, 189, 186);
     border-left: 1px solid rgb(186, 189, 186);
     border-collapse: collapse;
-    margin-right: 20px;
-    margin-left: 20px;
+    // // margin-right: 20px;
+    // // margin-left: 20px;
+    //padding: 10px;
     
     a {
         text-decoration: none;
@@ -24,6 +25,7 @@
     }
 
     thead {
+        text-align: left;
         tr{
             background-color: rgb(200, 200, 200);
             

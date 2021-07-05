@@ -51,46 +51,49 @@ export default class TeamDetails extends React.Component {
     }
     console.log(this.state.team.Constructor.name);
     return (
-      <div>
-        <div>
-          <img
-            alt="team logo"
-            src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
-              ` `,
-              `_`
-            )}.png`}
-          ></img>
-          <table>
-            <thead>
-              <tr>
-                <td colSpan="2">{this.state.team.Constructor.name}</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Country:</td>
-                <td>{this.state.team.Constructor.nationality}</td>
-              </tr>
-              <tr>
-                <td>Position:</td>
-                <td>{this.state.team.position}</td>
-              </tr>
-              <tr>
-                <td>Points:</td>
-                <td>{this.state.team.points}</td>
-              </tr>
-              <tr>
-                <td>History:</td>
-                <td>
-                  <a href={this.state.team.Constructor.url} target="_blank">
-                    <FontAwesomeIcon icon={faExternalLinkAlt} />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <div className="div-flex" >
+        <div className="div-small">
+          <div className="div-details">
+            <img
+              alt="team logo"
+              src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
+                ` `,
+                `_`
+              )}.png`}
+            ></img>
+            <table>
+              <thead>
+                <tr>
+                  <td colSpan="2">{this.state.team.Constructor.name}</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Country:</td>
+                  <td>{this.state.team.Constructor.nationality}</td>
+                </tr>
+                <tr>
+                  <td>Position:</td>
+                  <td>{this.state.team.position}</td>
+                </tr>
+                <tr>
+                  <td>Points:</td>
+                  <td>{this.state.team.points}</td>
+                </tr>
+                <tr>
+                  <td>History:</td>
+                  <td>
+                    <a href={this.state.team.Constructor.url} target="_blank">
+                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div>
+        <div className="div-big">
           <table className="div-tab">
             <thead>
               <tr>
@@ -123,14 +126,14 @@ export default class TeamDetails extends React.Component {
                         if (
                           race.Circuit.Location.country === "UK" &&
                           flag.en_short_name ===
-                            "United Kingdom of Great Britain and Northern Ireland"
+                          "United Kingdom of Great Britain and Northern Ireland"
                         ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         }
                         if (
                           race.Circuit.Location.country === "Korea" &&
                           flag.en_short_name ===
-                            "Korea (Democratic People's Republic of)"
+                          "Korea (Democratic People's Republic of)"
                         ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         }
@@ -153,8 +156,10 @@ export default class TeamDetails extends React.Component {
               })}
             </tbody>
           </table>
-        </div>
       </div>
+        </div>
+        </div>
+
     );
   }
 }

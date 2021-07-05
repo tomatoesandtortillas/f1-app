@@ -42,7 +42,10 @@ export default class Races extends React.Component {
       return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
     }
     return (
-      <div>
+      <div className="header">
+
+        <h1>Constructions Championship</h1>
+
         <table className="div-tab">
           <thead>
             <tr>

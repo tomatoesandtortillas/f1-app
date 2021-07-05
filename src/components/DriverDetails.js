@@ -56,64 +56,72 @@ export default class DriverDetails extends React.Component {
     }
 
     return (
-      <div>
-        <div>
-          <img
-            alt="driver picture"
-            src={`../assets/img/${
-              this.state.driver.givenName
-            }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
-          ></img>
-          <table>
-            <thead>
-              <tr>
-                <td colSpan="2">
-                  {this.state.driver.givenName} {this.state.driver.familyName}
-                  {this.state.flags.map((flag, i) => {
-                    if (this.state.driver.nationality === flag.nationality) {
-                      return <Flag key={i} country={flag.alpha_2_code} />;
-                    }
-                    if (
-                      this.state.driver.nationality === "British" &&
-                      flag.nationality === "British, UK"
-                    ) {
-                      return <Flag key={i} country={flag.alpha_2_code} />;
-                    }
-                    if (
-                      this.state.driver.nationality === "Dutch" &&
-                      flag.nationality === "Dutch, Netherlandic"
-                    ) {
-                      return <Flag key={i} country={flag.alpha_2_code} />;
-                    }
-                  })}
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Country:</td>
-                <td>{this.state.driver.nationality}</td>
-              </tr>
-              <tr>
-                <td>Team:</td>
-                <td>{this.state.constructor.name}</td>
-              </tr>
-              <tr>
-                <td>Birth:</td>
-                <td>{this.state.driver.dateOfBirth}</td>
-              </tr>
-              <tr>
-                <td>Biography:</td>
-                <td>
-                  <a href={this.state.driver.url} target="_blank">
-                    <FontAwesomeIcon icon={faExternalLinkAlt} />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <div className="div-flex" >
+        <div className="div-small">
+          <div className="div-details" >
+            
+            <table>
+              <thead>
+                <tr>
+                  <td>
+                  <img
+              alt="driver picture"
+              src={`../assets/img/${this.state.driver.givenName
+                }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
+            ></img>
+                  </td>
+                  <td>
+                    {this.state.flags.map((flag, i) => {
+                      if (this.state.driver.nationality === flag.nationality) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                      if (
+                        this.state.driver.nationality === "British" &&
+                        flag.nationality === "British, UK"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                      if (
+                        this.state.driver.nationality === "Dutch" &&
+                        flag.nationality === "Dutch, Netherlandic"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                    })}
+                    <br></br>
+                    {this.state.driver.givenName}<br></br> {this.state.driver.familyName}
+                    <br></br>
+                    <br></br>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Country:</td>
+                  <td>{this.state.driver.nationality}</td>
+                </tr>
+                <tr>
+                  <td>Team:</td>
+                  <td>{this.state.constructor.name}</td>
+                </tr>
+                <tr>
+                  <td>Birth:</td>
+                  <td>{this.state.driver.dateOfBirth}</td>
+                </tr>
+                <tr>
+                  <td>Biography:</td>
+                  <td>
+                    <a href={this.state.driver.url} target="_blank">
+                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div>
+
+        <div className="div-big">
           <table className="div-tab">
             <thead>
               <tr>
@@ -141,13 +149,13 @@ export default class DriverDetails extends React.Component {
                         } else if (
                           race.Circuit.Location.country == "UK" &&
                           flag.en_short_name ==
-                            "United Kingdom of Great Britain and Northern Ireland"
+                          "United Kingdom of Great Britain and Northern Ireland"
                         ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         } else if (
                           race.Circuit.Location.country == "Korea" &&
                           flag.en_short_name ==
-                            "Korea (Democratic People's Republic of)"
+                          "Korea (Democratic People's Republic of)"
                         ) {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         } else if (
