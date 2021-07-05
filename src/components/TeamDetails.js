@@ -54,17 +54,34 @@ export default class TeamDetails extends React.Component {
       <div className="div-flex" >
         <div className="div-small">
           <div className="div-details">
-            <img
-              alt="team logo"
-              src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
-                ` `,
-                `_`
-              )}.png`}
-            ></img>
+
             <table>
               <thead>
                 <tr>
-                  <td colSpan="2">{this.state.team.Constructor.name}</td>
+                  <td>
+                    <img
+                      alt="team logo"
+                      src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
+                        ` `,
+                        `_`
+                      )}.png`}
+                    ></img>
+                  </td>
+                  <td>
+                    {this.state.flags.map((flag, i) => {
+                      if (this.state.team.Constructor.nationality === flag.nationality) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                      if (
+                        this.state.team.Constructor.nationality === "British" &&
+                        flag.nationality === "British, UK"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} />;
+                      }
+                    })}
+                    <br></br>
+                    {this.state.team.Constructor.name}
+                  </td>
                 </tr>
               </thead>
               <tbody>
@@ -93,72 +110,72 @@ export default class TeamDetails extends React.Component {
           </div>
         </div>
         <div>
-        <div className="div-big">
-          <table className="div-tab">
-            <thead>
-              <tr>
-                <td colSpan="5">Formula 1 2013 Results</td>
-              </tr>
-              <tr>
-                <th>Round</th>
-                <th colSpan="2">GrandPrix</th>
-                <th>
-                  {this.state.results.Races[0].Results[0].Driver.familyName}
-                </th>
-                <th>
-                  {this.state.results.Races[0].Results[1].Driver.familyName}
-                </th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.results.Races.map((race, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{race.round}</td>
-                    <td>
-                      {this.state.flags.map((flag, i) => {
-                        if (
-                          race.Circuit.Location.country === flag.en_short_name
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        }
-                        if (
-                          race.Circuit.Location.country === "UK" &&
-                          flag.en_short_name ===
-                          "United Kingdom of Great Britain and Northern Ireland"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        }
-                        if (
-                          race.Circuit.Location.country === "Korea" &&
-                          flag.en_short_name ===
-                          "Korea (Democratic People's Republic of)"
-                        ) {
-                          return <Flag key={i} country={flag.alpha_2_code} />;
-                        }
-                      })}
-                    </td>
-                    <td>
-                      <Link to={`/raceDetails/${race.round}`}>
-                        {race.raceName}
-                      </Link>
-                    </td>
+          <div className="div-big">
+            <table className="div-tab">
+              <thead>
+                <tr>
+                  <td colSpan="5">Formula 1 2013 Results</td>
+                </tr>
+                <tr>
+                  <th>Round</th>
+                  <th colSpan="2">GrandPrix</th>
+                  <th>
+                    {this.state.results.Races[0].Results[0].Driver.familyName}
+                  </th>
+                  <th>
+                    {this.state.results.Races[0].Results[1].Driver.familyName}
+                  </th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.results.Races.map((race, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{race.round}</td>
+                      <td>
+                        {this.state.flags.map((flag, i) => {
+                          if (
+                            race.Circuit.Location.country === flag.en_short_name
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                          if (
+                            race.Circuit.Location.country === "UK" &&
+                            flag.en_short_name ===
+                            "United Kingdom of Great Britain and Northern Ireland"
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                          if (
+                            race.Circuit.Location.country === "Korea" &&
+                            flag.en_short_name ===
+                            "Korea (Democratic People's Republic of)"
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                        })}
+                      </td>
+                      <td>
+                        <Link to={`/raceDetails/${race.round}`}>
+                          {race.raceName}
+                        </Link>
+                      </td>
 
-                    <td>{race.Results[0].position}</td>
-                    <td>{race.Results[1].position}</td>
-                    <td>
-                      {parseInt(race.Results[0].points) +
-                        parseInt(race.Results[1].points)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                      <td>{race.Results[0].position}</td>
+                      <td>{race.Results[1].position}</td>
+                      <td>
+                        {parseInt(race.Results[0].points) +
+                          parseInt(race.Results[1].points)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-        </div>
-        </div>
 
     );
   }
