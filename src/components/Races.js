@@ -44,8 +44,6 @@ export default class Races extends React.Component {
     return (
       <div className="header">
 
-        <h1>Constructions Championship</h1>
-
         <table className="div-tab">
           <thead>
             <tr>
