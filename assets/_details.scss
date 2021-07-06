@@ -13,6 +13,7 @@
 .div-flex {
     display: flex;
     background-color: rgb(158, 156, 156);
+    flex-direction: row;
    
 
     .div-small {
@@ -26,13 +27,17 @@
     }
     .div-big {
         flex-basis: 84%;
-        margin: 10px;
-        
+        margin: 10px;  
     }
 }
 .picCenter{
     display:flex;
     align-items: center;
+    img {
+margin-right:5px;
+    }
 }
+
+
 
 

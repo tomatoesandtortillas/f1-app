@@ -63,11 +63,11 @@ export default class DriverDetails extends React.Component {
               <thead>
                 <tr>
                   <td>
-                  <img
-              alt="driver picture"
-              src={`../assets/img/${this.state.driver.givenName
-                }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
-            ></img>
+                    <img
+                      alt="driver picture"
+                      src={`../assets/img/${this.state.driver.givenName
+                        }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
+                    ></img>
                   </td>
                   <td>
                     {this.state.flags.map((flag, i) => {
@@ -124,7 +124,7 @@ export default class DriverDetails extends React.Component {
           <table className="div-tab">
             <thead>
               <tr>
-                <td colSpan="5">Formula 1 2013 Results</td>
+                <td className="borderRadius" colSpan="5">Formula 1 2013 Results</td>
               </tr>
               <tr>
                 <th>Round</th>
@@ -169,6 +169,7 @@ export default class DriverDetails extends React.Component {
                           return <Flag key={i} country={flag.alpha_2_code} />;
                         }
                       })}
+
                       <Link to={`/raceDetails/${race.round}`}>
                         {race.raceName}
                       </Link>

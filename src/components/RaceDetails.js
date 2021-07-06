@@ -57,79 +57,80 @@ export default class RaceDetails extends React.Component {
       <div className="div-flex" >
         <div className="div-small">
           <div className="div-details" >
-        <table>
-          <thead>
-            <tr>
-              <th colSpan="2">
-                {this.state.flags.map((flag, i) => {
-                  if (
-                    this.state.raceQualification.Circuit.Location.country ===
-                    flag.en_short_name
-                  ) {
-                    return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                  } else if (
-                    this.state.raceQualification.Circuit.Location.country == "UK" &&
-                    flag.en_short_name ==
-                    "United Kingdom of Great Britain and Northern Ireland"
-                  ) {
-                    return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                  } else if (
-                    this.state.raceQualification.Circuit.Location.country ==
-                    "Korea" &&
-                    flag.en_short_name == "Korea (Democratic People's Republic of)"
-                  ) {
-                    return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                  } else if (
-                    this.state.raceQualification.Circuit.Location.country == "UAE" &&
-                    flag.en_short_name == "United Arab Emirates"
-                  ) {
-                    return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                  } else if (
-                    this.state.raceQualification.Circuit.Location.country == "USA" &&
-                    flag.en_short_name == "United States of America"
-                  ) {
-                    return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                  }
-                })}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colSpan="2">{this.state.raceQualification.raceName}</td>
-            </tr>
-            <tr>
-              <td>Country:</td>
-              <td>{this.state.raceQualification.Circuit.Location.country}</td>
-            </tr>
-            <tr>
-              <td>Location:</td>
-              <td>{this.state.raceQualification.Circuit.Location.locality}</td>
-            </tr>
-            <tr>
-              <td>Date:</td>
-              <td>{this.state.raceQualification.date}</td>
-            </tr>
-            <tr>
-              <td>Full Report:</td>
-              <td>
-                <a
-                  href={this.state.raceQualification.Circuit.url}
-                  target="_blank"
-                >
-                  <FontAwesomeIcon icon={faExternalLinkAlt} />
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <table>
+              <thead>
+                <tr>
+                  <th colSpan="2">
+                    {this.state.flags.map((flag, i) => {
+                      if (
+                        this.state.raceQualification.Circuit.Location.country ===
+                        flag.en_short_name
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+                      } else if (
+                        this.state.raceQualification.Circuit.Location.country == "UK" &&
+                        flag.en_short_name ==
+                        "United Kingdom of Great Britain and Northern Ireland"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+                      } else if (
+                        this.state.raceQualification.Circuit.Location.country ==
+                        "Korea" &&
+                        flag.en_short_name == "Korea (Democratic People's Republic of)"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+                      } else if (
+                        this.state.raceQualification.Circuit.Location.country == "UAE" &&
+                        flag.en_short_name == "United Arab Emirates"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+                      } else if (
+                        this.state.raceQualification.Circuit.Location.country == "USA" &&
+                        flag.en_short_name == "United States of America"
+                      ) {
+                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+                      }
+                    })}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colSpan="2">{this.state.raceQualification.raceName}</td>
+                </tr>
+                <tr>
+                  <td>Country:</td>
+                  <td>{this.state.raceQualification.Circuit.Location.country}</td>
+                </tr>
+                <tr>
+                  <td>Location:</td>
+                  <td>{this.state.raceQualification.Circuit.Location.locality}</td>
+                </tr>
+                <tr>
+                  <td>Date:</td>
+                  <td>{this.state.raceQualification.date}</td>
+                </tr>
+                <tr>
+                  <td>Full Report:</td>
+                  <td>
+                    <a
+                      href={this.state.raceQualification.Circuit.url}
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div>
+        <div className="div-big">
+
           <table className="div-tab">
             <thead>
               <tr>
-                <td colSpan="4">Qualifying Results</td>
+                <td className="borderRadius" colSpan="4">Qualifying Results</td>
               </tr>
               <tr>
                 <th>Pos</th>
@@ -152,24 +153,24 @@ export default class RaceDetails extends React.Component {
                       <td>{driver.position}</td>
                       <td>
                         <div className="picCenter">
-                        {this.state.flags.map((flag, i) => {
-                          if (driver.Driver.nationality === flag.nationality) {
-                            return <Flag key={i} country={flag.alpha_2_code} />;
-                          }
-                          if (
-                            driver.Driver.nationality === "British" &&
-                            flag.nationality === "British, UK"
-                          ) {
-                            return <Flag key={i} country={flag.alpha_2_code} />;
-                          }
-                          if (
-                            driver.Driver.nationality === "Dutch" &&
-                            flag.nationality === "Dutch, Netherlandic"
-                          ) {
-                            return <Flag key={i} country={flag.alpha_2_code} />;
-                          }
-                        })}
-                        {driver.Driver.familyName}
+                          {this.state.flags.map((flag, i) => {
+                            if (driver.Driver.nationality === flag.nationality) {
+                              return <Flag key={i} country={flag.alpha_2_code} />;
+                            }
+                            if (
+                              driver.Driver.nationality === "British" &&
+                              flag.nationality === "British, UK"
+                            ) {
+                              return <Flag key={i} country={flag.alpha_2_code} />;
+                            }
+                            if (
+                              driver.Driver.nationality === "Dutch" &&
+                              flag.nationality === "Dutch, Netherlandic"
+                            ) {
+                              return <Flag key={i} country={flag.alpha_2_code} />;
+                            }
+                          })}
+                          {driver.Driver.familyName}
                         </div>
                       </td>
                       <td>{driver.Constructor.name}</td>
@@ -181,11 +182,11 @@ export default class RaceDetails extends React.Component {
             </tbody>
           </table>
         </div>
-        <div>
+        <div className="div-big">
           <table className="div-tab">
             <thead>
               <tr>
-                <td colSpan="5">Race Results</td>
+                <td className="borderRadius" colSpan="5">Race Results</td>
               </tr>
               <tr>
                 <th>Pos</th>
@@ -235,6 +236,7 @@ export default class RaceDetails extends React.Component {
             </tbody>
           </table>
         </div>
+
       </div>
     );
   }

@@ -1,13 +1,8 @@
 .div-tab {
-    border: 1px solid rgb(33, 33, 34);
     border-radius: 15px 5px 5px 5px;
     width: 100%;
-    border-top: 1px solid rgb(186, 189, 186);
-    border-left: 1px solid rgb(186, 189, 186);
     border-collapse: collapse;
-    // // margin-right: 20px;
-    // // margin-left: 20px;
-    //padding: 10px;
+   
     
     a {
         text-decoration: none;
@@ -40,24 +35,19 @@
         td {
             padding: 5px;
         }
-       
     }  
-
+}
+.borderRadius{
+border-radius: 10px 10px 0 0;
+    text-indent: 20px;
 }
 .header h1 {
     font-style: italic;
     color: white;
     padding-left: 25px;
     font-size: 50px;
-    text-shadow: 5px 5px #3f3d3d;
+    text-shadow: 5px 5px #3f3d3d;   
+}
 
-    //font-family: lobster;
-     
-}
-.header {
-    background-color: gray;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: #050505;
-}
 
 

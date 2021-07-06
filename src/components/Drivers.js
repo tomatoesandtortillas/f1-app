@@ -52,8 +52,8 @@ export default class Drivers extends React.Component {
         <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="4">
-                Drivers Championship Standings - {this.state.season}
+              <td className="borderRadius" colSpan="4">
+                    Drivers Championship Standings - {this.state.season}
               </td>
             </tr>
           </thead>

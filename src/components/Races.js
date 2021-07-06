@@ -47,7 +47,7 @@ export default class Races extends React.Component {
         <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="5">Race Calendar - 2013</td>
+              <td className="borderRadius" colSpan="5">Race Calendar - 2013</td>
             </tr>
             <tr>
               <th>Round</th>
