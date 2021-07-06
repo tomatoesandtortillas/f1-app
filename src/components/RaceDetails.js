@@ -51,7 +51,9 @@ export default class RaceDetails extends React.Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+      return <div className="loader">
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>;
     }
     return (
       <div className="div-flex" >

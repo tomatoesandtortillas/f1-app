@@ -42,14 +42,17 @@ export default class Drivers extends React.Component {
   }
   render() {
     if (!this.state.isLoaded) {
-      return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+      return <div className="loader">
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>;
     }
     return (
       <div className="header">
           
-              <h1>Drivers Championship</h1>
-        
-        <table className="div-tab">
+        <h1>Drivers Championship</h1>
+        <div className="div-flex">
+        <div className="div-big">
+        <table className="div-tab driverFont">
           <thead>
             <tr>
               <td className="borderRadius" colSpan="4">
@@ -91,7 +94,9 @@ export default class Drivers extends React.Component {
             })}
           </tbody>
         </table>
-      </div>
+          </div>
+        </div>
+        </div>
     );
   }
 }

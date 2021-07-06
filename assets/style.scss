@@ -105,3 +105,9 @@ nav ul li,
 .list-reset {
     @include list-reset;
 }
+.loader {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

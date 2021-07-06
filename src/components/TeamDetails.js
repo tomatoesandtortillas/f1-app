@@ -47,7 +47,9 @@ export default class TeamDetails extends React.Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+      return <div className="loader">
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>;
     }
     console.log(this.state.team.Constructor.name);
     return (
@@ -68,9 +70,10 @@ export default class TeamDetails extends React.Component {
                     ></img>
                   </td>
                   <td>
+                    <div>
                     {this.state.flags.map((flag, i) => {
                       if (this.state.team.Constructor.nationality === flag.nationality) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
+                        return <Flag key={i} country={flag.alpha_2_code}/>;
                       }
                       if (
                         this.state.team.Constructor.nationality === "British" &&
@@ -79,6 +82,7 @@ export default class TeamDetails extends React.Component {
                         return <Flag key={i} country={flag.alpha_2_code} />;
                       }
                     })}
+                    </div>
                     <br></br>
                     {this.state.team.Constructor.name}
                   </td>

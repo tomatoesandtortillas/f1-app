@@ -52,48 +52,47 @@ export default class DriverDetails extends React.Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+      return <div className="loader">
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>;
     }
 
     return (
       <div className="div-flex" >
         <div className="div-small">
+          
+
+            <div className="driverPic">
+              <img
+                alt="driver picture"
+                src={`../assets/img/${this.state.driver.givenName
+                  }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
+              ></img>
+            </div>
+
+            <div className="flags">
+              {this.state.driver.givenName} {this.state.driver.familyName}
+              {this.state.flags.map((flag, i) => {
+                if (this.state.driver.nationality === flag.nationality) {
+                  return <Flag key={i} country={flag.alpha_2_code} />;
+                }
+                if (
+                  this.state.driver.nationality === "British" &&
+                  flag.nationality === "British, UK"
+                ) {
+                  return <Flag key={i} country={flag.alpha_2_code} />;
+                }
+                if (
+                  this.state.driver.nationality === "Dutch" &&
+                  flag.nationality === "Dutch, Netherlandic"
+                ) {
+                  return <Flag key={i} country={flag.alpha_2_code} />;
+                }
+              })}             
+            </div>
+
           <div className="div-details" >
             <table>
-              <thead>
-                <tr>
-                  <td>
-                    <img
-                      alt="driver picture"
-                      src={`../assets/img/${this.state.driver.givenName
-                        }_${this.state.driver.familyName.replaceAll(` `, `_`)}.jpg`}
-                    ></img>
-                  </td>
-                  <td>
-                    {this.state.flags.map((flag, i) => {
-                      if (this.state.driver.nationality === flag.nationality) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                      if (
-                        this.state.driver.nationality === "British" &&
-                        flag.nationality === "British, UK"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                      if (
-                        this.state.driver.nationality === "Dutch" &&
-                        flag.nationality === "Dutch, Netherlandic"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                    })}
-                    <br></br>
-                    {this.state.driver.givenName}<br></br> {this.state.driver.familyName}
-                    <br></br>
-                    <br></br>
-                  </td>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
                   <td>Country:</td>

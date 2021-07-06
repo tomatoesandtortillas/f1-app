@@ -43,12 +43,14 @@ export default class Teams extends React.Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <Loader type="Puff" color="#00BFFF" height={100} width={100} />;
+      return <div className="loader">
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>;
     }
     return (
       <div className="main">
         <h1 className="mainTitle">Constructions Championship</h1>
-        <table className="div-tab">
+        <table className="div-tab driverFont">
           <thead>
             <tr>
               <td className="borderRadius" colSpan="4">Constructor Championship Standings - 2013</td>
