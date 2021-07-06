@@ -59,7 +59,6 @@ export default class DriverDetails extends React.Component {
       <div className="div-flex" >
         <div className="div-small">
           <div className="div-details" >
-            
             <table>
               <thead>
                 <tr>
@@ -140,7 +139,7 @@ export default class DriverDetails extends React.Component {
                 return (
                   <tr key={i}>
                     <td>{race.round}</td>
-                    <td>
+                    <td className="picCenter">
                       {this.state.flags.map((flag, i) => {
                         if (
                           race.Circuit.Location.country === flag.en_short_name

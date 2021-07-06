@@ -47,7 +47,7 @@ export default class Races extends React.Component {
         <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="4">Race Calendar - 2013</td>
+              <td colSpan="5">Race Calendar - 2013</td>
             </tr>
             <tr>
               <th>Round</th>
@@ -62,7 +62,7 @@ export default class Races extends React.Component {
               return (
                 <tr key={i}>
                   <td>{race.round}</td>
-                  <td>
+                  <td className="picCenter">
                     {this.state.flags.map((flag, i) => {
                       if (
                         race.Circuit.Location.country === flag.en_short_name
@@ -98,7 +98,7 @@ export default class Races extends React.Component {
                   </td>
                   <td>{race.Circuit.circuitName}</td>
                   <td>{race.date}</td>
-                  <td>
+                  <td className="picCenter">
                     {this.state.flags.map((flag, i) => {
                       if (
                         race.Results[0].Driver.nationality === flag.nationality

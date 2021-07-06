@@ -52,7 +52,7 @@ export default class Drivers extends React.Component {
         <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="5">
+              <td colSpan="4">
                 Drivers Championship Standings - {this.state.season}
               </td>
             </tr>
@@ -62,7 +62,7 @@ export default class Drivers extends React.Component {
               return (
                 <tr key={i}>
                   <td>{driver.position}</td>
-                  <td>
+                  <td className="picCenter">
                     {this.state.flags.map((flag, i) => {
                       if (driver.Driver.nationality === flag.nationality) {
                         return <Flag key={i} country={flag.alpha_2_code} />;
@@ -80,8 +80,6 @@ export default class Drivers extends React.Component {
                         return <Flag key={i} country={flag.alpha_2_code} />;
                       }
                     })}
-                  </td>
-                  <td>
                     <Link to={`/driversDetails/${driver.Driver.driverId}`}>
                       {driver.Driver.givenName} {driver.Driver.familyName}
                     </Link>

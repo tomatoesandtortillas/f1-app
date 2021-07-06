@@ -51,7 +51,7 @@ export default class Teams extends React.Component {
         <table className="div-tab">
           <thead>
             <tr>
-              <td colSpan="5">Constructor Championship Standings - 2013</td>
+              <td colSpan="4">Constructor Championship Standings - 2013</td>
             </tr>
           </thead>
           <tbody>
@@ -59,7 +59,7 @@ export default class Teams extends React.Component {
               return (
                 <tr key={i}>
                   <td>{team.position}</td>
-                  <td>
+                  <td className="picCenter">
                     {this.state.flags.map((flag, i) => {
                       if (team.Constructor.nationality === flag.nationality) {
                         return <Flag key={i} country={flag.alpha_2_code} />;
@@ -71,8 +71,6 @@ export default class Teams extends React.Component {
                         return <Flag key={i} country={flag.alpha_2_code} />;
                       }
                     })}
-                  </td>
-                  <td>
                     <Link to={`/teamDetails/${team.Constructor.constructorId}`}>
                       {" "}
                       {team.Constructor.name}

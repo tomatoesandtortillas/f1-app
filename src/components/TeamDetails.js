@@ -114,11 +114,11 @@ export default class TeamDetails extends React.Component {
             <table className="div-tab">
               <thead>
                 <tr>
-                  <td colSpan="5">Formula 1 2013 Results</td>
+                  <td colSpan="6">Formula 1 2013 Results</td>
                 </tr>
                 <tr>
                   <th>Round</th>
-                  <th colSpan="2">GrandPrix</th>
+                  <th>GrandPrix</th>
                   <th>
                     {this.state.results.Races[0].Results[0].Driver.familyName}
                   </th>
@@ -133,7 +133,7 @@ export default class TeamDetails extends React.Component {
                   return (
                     <tr key={i}>
                       <td>{race.round}</td>
-                      <td>
+                      <td className="picCenter">
                         {this.state.flags.map((flag, i) => {
                           if (
                             race.Circuit.Location.country === flag.en_short_name
@@ -155,13 +155,10 @@ export default class TeamDetails extends React.Component {
                             return <Flag key={i} country={flag.alpha_2_code} />;
                           }
                         })}
-                      </td>
-                      <td>
                         <Link to={`/raceDetails/${race.round}`}>
                           {race.raceName}
                         </Link>
-                      </td>
-
+                      </td>            
                       <td>{race.Results[0].position}</td>
                       <td>{race.Results[1].position}</td>
                       <td>
