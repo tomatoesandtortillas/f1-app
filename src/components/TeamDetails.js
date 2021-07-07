@@ -17,6 +17,32 @@ export default class TeamDetails extends React.Component {
       flags: [],
       isLoaded: false,
     };
+    this.changeColor = this.changeColor.bind(this);
+  }
+  changeColor = (position) => {
+    
+    // let pos;
+    var color = "";
+    switch(position) {
+      case 1:
+        color = "#047a73";
+        break;
+      case 2:
+        color = "#ff0000";
+        break;
+      case 3:
+        color = "#eeb647";
+        break;
+      case 4:
+        color = "#ff9100";
+        break;
+      case 5:
+        color = "#ff9e00";
+        break;
+      default:
+        color = "#c0c0c0";
+    }
+    return color;
   }
   componentDidMount() {
     this.getTeamDetails(this.props.match.params.id);
@@ -99,7 +125,7 @@ export default class TeamDetails extends React.Component {
                   <td>History:</td>
                   <td>
                     <a href={this.state.team.Constructor.url} target="_blank">
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                      <FontAwesomeIcon color="rgb(79, 136, 139)" icon={faExternalLinkAlt} />
                     </a>
                   </td>
                 </tr>
@@ -157,8 +183,12 @@ export default class TeamDetails extends React.Component {
                         {race.raceName}
                       </Link>
                     </td>
-                    <td>{race.Results[0].position}</td>
-                    <td>{race.Results[1].position}</td>
+                    <td
+                    style={{backgroundColor:this.changeColor(parseInt(race.Results[0].position))}}
+                    >{race.Results[0].position}</td>
+                    <td
+                    style={{backgroundColor:this.changeColor(parseInt(race.Results[1].position))}}
+                    >{race.Results[1].position}</td>
                     <td>
                       {parseInt(race.Results[0].points) +
                         parseInt(race.Results[1].points)}

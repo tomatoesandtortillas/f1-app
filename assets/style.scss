@@ -36,26 +36,36 @@
                 color: $ming;
             }
 }
+// #app {
+//     height: 100vh;
+// }
+html{
+    height: 100%;
+    // overflow: hidden;
+}
+
 body {
+    background-color: $background-color;
     @include margin-reset;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .main {
     background-color: $background-color;
-height: 100%;
+    height: 100%;
 }
 .side-bar {
     margin-top: 50px;
     position: fixed;
     width: 175px;
-    height: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 .nav {
     background-color: $background-color;
     position: relative;
     text-align: left;
     font-weight: bold;
-    height: 100vh;
+    height: 350px;
     ul {
         padding-inline-start: 0;
         li {
@@ -101,7 +111,7 @@ height: 100%;
   margin-top: 0;
   padding-top: 50px;
   margin-left: 175px;
-  height: 100vh;
+  height: max-content;
 }
 nav ul li,
 .list-reset {

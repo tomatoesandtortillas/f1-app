@@ -14,7 +14,33 @@ export default class RaceDetails extends React.Component {
       isLoaded: false,
       flags: [],
     };
+    this.changeColor = this.changeColor.bind(this);
   }
+  changeColor = (position) => {
+  
+    var color = "";
+    switch(position) {
+      case 1:
+        color = "#047a73";
+        break;
+      case 2:
+        color = "#f87575";
+        break;
+      case 3:
+        color = "#eeb647";
+        break;
+      case 4:
+        color = "#ff9100";
+        break;
+      case 5:
+        color = "#ff9e00";
+        break;
+      default:
+        color = "#c0c0c0";
+    }
+    return color;
+  }
+
   componentDidMount() {
     this.getRaceDetails(this.props.match.params.id);
     this.getFlags();
@@ -119,7 +145,7 @@ export default class RaceDetails extends React.Component {
                       href={this.state.raceQualification.Circuit.url}
                       target="_blank"
                     >
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                      <FontAwesomeIcon color="rgb(79, 136, 139)" icon={faExternalLinkAlt} />
                     </a>
                   </td>
                 </tr>
@@ -230,7 +256,9 @@ export default class RaceDetails extends React.Component {
                         ? raceResult.Time.time
                         : ""}
                     </td>
-                    <td>{raceResult.points}</td>
+                    <td
+                    style={{backgroundColor:this.changeColor(parseInt(raceResult.position))}}
+                    >{raceResult.points}</td>
                   </tr>
                 );
               })}

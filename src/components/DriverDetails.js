@@ -14,10 +14,35 @@ export default class DriverDetails extends React.Component {
       constructors: [],
       races: [],
       isLoaded: false,
-      flags: [],
+      flags: []
     };
+    this.changeColor = this.changeColor.bind(this);
   }
-
+  changeColor = (position) => {
+    
+    // let pos;
+    var color = "";
+    switch(position) {
+      case 1:
+        color = "#047a73";
+        break;
+      case 2:
+        color = "#ff0000";
+        break;
+      case 3:
+        color = "#eeb647";
+        break;
+      case 4:
+        color = "#ff9100";
+        break;
+      case 5:
+        color = "#ff9e00";
+        break;
+      default:
+        color = "#c0c0c0";
+    }
+    return color;
+  }
   componentDidMount() {
     this.getDriverDetails(this.props.match.params.id);
   }
@@ -109,8 +134,8 @@ export default class DriverDetails extends React.Component {
                 <tr>
                   <td>Biography:</td>
                   <td>
-                    <a href={this.state.driver.url} target="_blank">
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    <a href={this.state.driver.url} target="_blank" >
+                      <FontAwesomeIcon color="rgb(79, 136, 139)" icon={faExternalLinkAlt} />
                     </a>
                   </td>
                 </tr>
@@ -135,6 +160,7 @@ export default class DriverDetails extends React.Component {
             </thead>
             <tbody>
               {this.state.races.map((race, i) => {
+                
                 return (
                   <tr key={i}>
                     <td>{race.round}</td>
@@ -175,7 +201,9 @@ export default class DriverDetails extends React.Component {
                     </td>
                     <td>{race.Results[0].Constructor.name}</td>
                     <td>{race.Results[0].grid}</td>
-                    <td>{race.Results[0].position}</td>
+                    <td
+                    style={{backgroundColor:this.changeColor(parseInt(race.Results[0].position))}}
+                    >{race.Results[0].position}</td>
                   </tr>
                 );
               })}
