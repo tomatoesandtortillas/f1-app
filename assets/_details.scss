@@ -31,7 +31,7 @@
     display:flex;
     align-items:center;
     img {
-        margin-right:5px;
+        margin-right:10px;
     }
 }
 .flags{
@@ -53,12 +53,26 @@
     align-items:center;
     justify-content: center;
     img {
-         flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-//    object-fit: contain;
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%
+
     }
 }
 .driverFont{
     font-size:20px;
+}
+.teamLogo{
+   position:relative;
+    display: flex;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    align-items:center;
+    justify-content: center;
+    img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100% 
+}
 }

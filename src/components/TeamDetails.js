@@ -55,39 +55,34 @@ export default class TeamDetails extends React.Component {
     return (
       <div className="div-flex" >
         <div className="div-small">
-          <div className="div-details">
 
+          <div className="teamLogo">
+            <img
+              alt="team logo"
+              src={`../assets/img/teams/${this.state.team.Constructor.name.replace(` `, `_`)}.png`}
+            ></img>
+          </div>
+          
+          <div className="flags">
+            {this.state.flags.map((flag, i) => {
+              if (this.state.team.Constructor.nationality === flag.nationality) {
+                return <Flag key={i} country={flag.alpha_2_code} />;
+              }
+              if (
+                this.state.team.Constructor.nationality === "British" &&
+                flag.nationality === "British, UK"
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} />;
+              }
+            })}
+          </div>
+          <div>
+            {this.state.team.Constructor.name}
+          </div>
+
+
+          <div className="div-details">
             <table>
-              <thead>
-                <tr>
-                  <td>
-                    <img
-                      alt="team logo"
-                      src={`../assets/img/teams/${this.state.team.Constructor.name.replace(
-                        ` `,
-                        `_`
-                      )}.png`}
-                    ></img>
-                  </td>
-                  <td>
-                    <div>
-                    {this.state.flags.map((flag, i) => {
-                      if (this.state.team.Constructor.nationality === flag.nationality) {
-                        return <Flag key={i} country={flag.alpha_2_code}/>;
-                      }
-                      if (
-                        this.state.team.Constructor.nationality === "British" &&
-                        flag.nationality === "British, UK"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                    })}
-                    </div>
-                    <br></br>
-                    {this.state.team.Constructor.name}
-                  </td>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
                   <td>Country:</td>
