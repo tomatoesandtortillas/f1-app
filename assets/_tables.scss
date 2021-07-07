@@ -6,6 +6,9 @@
         text-decoration: none;
         color:rgb(83, 83, 82);
     }
+    a:hover{
+        color:$ming;
+    }
     tr:nth-child(even){
         background-color: rgb(230, 230, 230);
         font-weight: 700;

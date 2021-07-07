@@ -52,7 +52,7 @@ export default class RaceDetails extends React.Component {
   render() {
     if (!this.state.isLoaded) {
       return <div className="loader">
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <Loader type="Puff" color="#3c6e71ff" height={100} width={100} />
       </div>;
     }
     return (
@@ -128,7 +128,6 @@ export default class RaceDetails extends React.Component {
           </div>
         </div>
         <div className="div-big">
-
           <table className="div-tab">
             <thead>
               <tr>

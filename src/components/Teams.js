@@ -44,52 +44,58 @@ export default class Teams extends React.Component {
   render() {
     if (!this.state.isLoaded) {
       return <div className="loader">
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <Loader type="Puff" color="#3c6e71ff" height={100} width={100} />
       </div>;
     }
     return (
       <div className="main">
-        <h1 className="mainTitle">Constructions Championship</h1>
-        <table className="div-tab driverFont">
-          <thead>
-            <tr>
-              <td className="borderRadius" colSpan="4">Constructor Championship Standings - 2013</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.teams.map((team, i) => {
-              return (
-                <tr key={i}>
-                  <td>{team.position}</td>
-                  <td className="picCenter">
-                    {this.state.flags.map((flag, i) => {
-                      if (team.Constructor.nationality === flag.nationality) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                      if (
-                        team.Constructor.nationality === "British" &&
-                        flag.nationality === "British, UK"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} />;
-                      }
-                    })}
-                    <Link to={`/teamDetails/${team.Constructor.constructorId}`}>
-                      {" "}
-                      {team.Constructor.name}
-                    </Link>
-                  </td>
-                  <td>
-                    Details{" "}
-                    <a href={team.Constructor.url} target="_blank">
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
-                    </a>
-                  </td>
-                  <td>{team.points}</td>
+        <div className="header">
+          <h1>Constructions Championship</h1>
+        </div>
+        <div className="div-flex">
+          <div className="div-big">
+            <table className="div-tab driverFont">
+              <thead>
+                <tr>
+                  <td className="borderRadius " colSpan="4">Constructor Championship Standings - 2013</td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {this.state.teams.map((team, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{team.position}</td>
+                      <td className="picCenter">
+                        {this.state.flags.map((flag, i) => {
+                          if (team.Constructor.nationality === flag.nationality) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                          if (
+                            team.Constructor.nationality === "British" &&
+                            flag.nationality === "British, UK"
+                          ) {
+                            return <Flag key={i} country={flag.alpha_2_code} />;
+                          }
+                        })}
+                        <Link to={`/teamDetails/${team.Constructor.constructorId}`}>
+                          {" "}
+                          {team.Constructor.name}
+                        </Link>
+                      </td>
+                      <td>
+                        Details{" "}
+                        <a href={team.Constructor.url} target="_blank">
+                          <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </a>
+                      </td>
+                      <td>{team.points}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }

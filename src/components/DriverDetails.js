@@ -53,7 +53,7 @@ export default class DriverDetails extends React.Component {
   render() {
     if (!this.state.isLoaded) {
       return <div className="loader">
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <Loader type="Puff" color="#3c6e71ff" height={100} width={100} />
       </div>;
     }
 
