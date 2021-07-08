@@ -17,9 +17,9 @@ export default class RaceDetails extends React.Component {
     this.changeColor = this.changeColor.bind(this);
   }
   changeColor = (position) => {
-  
+
     var color = "";
-    switch(position) {
+    switch (position) {
       case 1:
         color = "#047a73";
         break;
@@ -84,44 +84,40 @@ export default class RaceDetails extends React.Component {
     return (
       <div className="div-flex" >
         <div className="div-small">
+          <div className="flag-div">
+            {this.state.flags.map((flag, i) => {
+              if (
+                this.state.raceQualification.Circuit.Location.country ===
+                flag.en_short_name
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+              } else if (
+                this.state.raceQualification.Circuit.Location.country == "UK" &&
+                flag.en_short_name ==
+                "United Kingdom of Great Britain and Northern Ireland"
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+              } else if (
+                this.state.raceQualification.Circuit.Location.country ==
+                "Korea" &&
+                flag.en_short_name == "Korea (Democratic People's Republic of)"
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+              } else if (
+                this.state.raceQualification.Circuit.Location.country == "UAE" &&
+                flag.en_short_name == "United Arab Emirates"
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+              } else if (
+                this.state.raceQualification.Circuit.Location.country == "USA" &&
+                flag.en_short_name == "United States of America"
+              ) {
+                return <Flag key={i} country={flag.alpha_2_code} size={200} />;
+              }
+            })}
+          </div>
           <div className="div-details" >
             <table>
-              <thead>
-                <tr>
-                  <th colSpan="2">
-                    {this.state.flags.map((flag, i) => {
-                      if (
-                        this.state.raceQualification.Circuit.Location.country ===
-                        flag.en_short_name
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                      } else if (
-                        this.state.raceQualification.Circuit.Location.country == "UK" &&
-                        flag.en_short_name ==
-                        "United Kingdom of Great Britain and Northern Ireland"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                      } else if (
-                        this.state.raceQualification.Circuit.Location.country ==
-                        "Korea" &&
-                        flag.en_short_name == "Korea (Democratic People's Republic of)"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                      } else if (
-                        this.state.raceQualification.Circuit.Location.country == "UAE" &&
-                        flag.en_short_name == "United Arab Emirates"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                      } else if (
-                        this.state.raceQualification.Circuit.Location.country == "USA" &&
-                        flag.en_short_name == "United States of America"
-                      ) {
-                        return <Flag key={i} country={flag.alpha_2_code} size={200} />;
-                      }
-                    })}
-                  </th>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
                   <td colSpan="2">{this.state.raceQualification.raceName}</td>
@@ -257,7 +253,7 @@ export default class RaceDetails extends React.Component {
                         : ""}
                     </td>
                     <td
-                    style={{backgroundColor:this.changeColor(parseInt(raceResult.position))}}
+                      style={{ backgroundColor: this.changeColor(parseInt(raceResult.position)) }}
                     >{raceResult.points}</td>
                   </tr>
                 );

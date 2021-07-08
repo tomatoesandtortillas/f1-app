@@ -14,11 +14,22 @@ export default class App extends React.Component {
     return (
       <Router>
         <div className="main">
-          <div className="top-bar"></div>
-          <div className="side-bar">
+          <div className="top-bar">
+            <div className="logo-div-responsive">
+              <img src="../assets/img/formula-1-logo.svg"></img>
+            </div>
+            <div className="search">
+              
+            </div>
+              <div className="dropdown">dropdown</div>
+
+
+          </div>
+          <div className="side-bar dropdown-content">
             <div className="logo-div">
               <img src="../assets/img/formula-1-logo.svg"></img>
             </div>
+
             <nav className="nav">
               <ul>
                 <li>
@@ -57,6 +68,7 @@ export default class App extends React.Component {
                   </Link>
                 </li>
               </ul>
+
             </nav>
           </div>
           <div className="content">

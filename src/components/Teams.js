@@ -83,8 +83,8 @@ export default class Teams extends React.Component {
                         </Link>
                       </td>
                       <td>
-                        Details{" "}
                         <a href={team.Constructor.url} target="_blank">
+                        Details{"  "}
                           <FontAwesomeIcon icon={faExternalLinkAlt} />
                         </a>
                       </td>

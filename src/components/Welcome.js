@@ -6,7 +6,8 @@ export default class Welcome extends React.Component {
         return (
             <div className="welcome-page" style={{
                 backgroundImage: "url(" + "../assets/img/frontPage.jpg" + ")",
-            }}>
+                }}>
+                                
             </div>
         );
     }

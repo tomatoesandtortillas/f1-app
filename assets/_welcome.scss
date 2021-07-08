@@ -1,11 +1,17 @@
 .welcome-page {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    @media(max-width: 375px) {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
 }
