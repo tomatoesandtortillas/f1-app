@@ -48,7 +48,7 @@ export default class Teams extends React.Component {
       </div>;
     }
     return (
-      <div className="main">
+      <div className="main-holder">
         <div className="header">
           <h1>Constructions Championship</h1>
         </div>

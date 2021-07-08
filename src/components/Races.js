@@ -44,7 +44,7 @@ export default class Races extends React.Component {
       </div>;
     }
     return (
-      <div className="main">
+      <div className="main-holder">
 
         <div className="header">
           <h1>Race Calendar</h1>
