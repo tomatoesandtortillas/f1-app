@@ -21,9 +21,14 @@
         position: absolute;
         right: 10px;
         top: 12px;
-        width: 25px;
-        height: 25px;
+        width: max-content;
+        height: max-content;
         background-color: $indigo-dye;
+        @media(max-width: 375px) {
+            width: max-content;
+            height: max-content;
+        }
+
     }
     @media(max-width: 375px) {
         display: flex;
@@ -51,10 +56,14 @@
             border-radius: 100%;
             position: absolute;
             right: 10px;
-            top: 12px;
-            width: 25px;
-            height: 25px;
+            top: 15px;
+            width: max-content;
+            height: max-content;
             background-color: $indigo-dye;
+            input{
+                width: 75px;
+                height: auto;
+            }
         }
     }
 }

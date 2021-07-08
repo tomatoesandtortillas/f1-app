@@ -4,7 +4,6 @@ import * as $ from "jquery";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import Flag from "react-flagkit";
-import { data } from "jquery";
 
 export default class Drivers extends React.Component {
   constructor() {
@@ -61,8 +60,25 @@ export default class Drivers extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.drivers.map((driver, i) => {
+            {this.state.drivers.filter((val) => {
+              if (this.props.propsSearch === "") {
+                return val;
+              } else if (
+                val.Driver.givenName
+                  .toLowerCase()
+                  .includes(this.props.propsSearch.toLowerCase()) ||
+                val.Driver.familyName
+                  .toLowerCase()
+                  .includes(this.props.propsSearch.toLowerCase()) ||
+                val.Constructors[0].name
+                  .toLowerCase()
+                  .includes(this.props.propsSearch.toLowerCase())
+              ) {
+                return val;
+              }
+            }).map((driver, i) => {
               return (
+
                 <tr key={i}>
                   <td>{driver.position}</td>
                   <td className="picCenter">

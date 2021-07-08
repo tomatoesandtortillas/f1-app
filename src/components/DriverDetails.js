@@ -159,7 +159,19 @@ export default class DriverDetails extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.races.map((race, i) => {
+              {this.state.races.
+            //   filter((val) => {
+            //   if (this.props.propsSearch === "") {
+            //     return val;
+            //   } else if (
+            //     val.race.raceName
+            //       .toLowerCase()
+            //       .includes(this.props.propsSearch.toLowerCase())
+            //   ) {
+            //     return val;
+            //   }
+            // }).
+            map((race, i) => {
                 
                 return (
                   <tr key={i}>
