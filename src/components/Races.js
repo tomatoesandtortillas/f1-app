@@ -53,13 +53,13 @@ export default class Races extends React.Component {
           <div className="div-big">
 
 
-            <table className="div-tab driverFont">
+            <table className="div-tab driverFont smallerFont">
               <thead>
                 <tr>
                   <td className="borderRadius" colSpan="5">Race Calendar - 2013</td>
                 </tr>
                 <tr>
-                  <th>Round</th>
+                  <th>Rnd</th>
                   <th>GrandPrix</th>
                   <th>Circuit</th>
                   <th>Date</th>

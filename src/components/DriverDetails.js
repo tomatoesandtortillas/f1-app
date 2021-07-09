@@ -151,7 +151,7 @@ export default class DriverDetails extends React.Component {
                 <td className="borderRadius" colSpan="5">Formula 1 2013 Results</td>
               </tr>
               <tr>
-                <th>Round</th>
+                <th>Rnd</th>
                 <th>GrandPrix</th>
                 <th>Team</th>
                 <th>Grid</th>

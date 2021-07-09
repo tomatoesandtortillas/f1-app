@@ -41,6 +41,9 @@
     align-items: center;
     img {
         margin-right: 10px;
+        @media(max-width: 375px) {
+            margin-right: 5px;
+        }
     }
 }
 .flags {
@@ -72,6 +75,10 @@
     @media(max-width: 375px) {
         font-size: 14px;
     }
+}
+.smallerFont{
+     @media(max-width: 375px) {font-size:12px;}
+     
 }
 .teamLogo {
     position: relative;

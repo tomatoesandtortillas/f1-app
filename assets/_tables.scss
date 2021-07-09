@@ -58,6 +58,10 @@
         }
     }  
 }
+.smallerFont{
+     @media(max-width: 375px) {font-size:12px;}
+     
+}
 .borderRadius{
 border-radius: 10px 10px 0 0;
     text-indent: 20px;

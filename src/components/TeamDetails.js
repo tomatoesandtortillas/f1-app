@@ -141,7 +141,7 @@ export default class TeamDetails extends React.Component {
                 <td className="borderRadius" colSpan="6">Formula 1 2013 Results</td>
               </tr>
               <tr>
-                <th>Round</th>
+                <th>Rnd</th>
                 <th>GrandPrix</th>
                 <th>
                   {this.state.results.Races[0].Results[0].Driver.familyName}
@@ -149,7 +149,7 @@ export default class TeamDetails extends React.Component {
                 <th>
                   {this.state.results.Races[0].Results[1].Driver.familyName}
                 </th>
-                <th>Points</th>
+                <th>Pts</th>
               </tr>
             </thead>
             <tbody>

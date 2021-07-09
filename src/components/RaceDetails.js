@@ -216,7 +216,7 @@ export default class RaceDetails extends React.Component {
                 <th>Driver</th>
                 <th>Team</th>
                 <th>Results</th>
-                <th>Points</th>
+                <th>Pts</th>
               </tr>
             </thead>
             <tbody>
